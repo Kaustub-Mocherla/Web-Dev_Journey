@@ -1,0 +1,85 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Responsive Blog Layout</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .main {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            flex: 2;
+        }
+
+        .sidebar {
+            background: #f1f1f1;
+            padding: 20px;
+            border-radius: 8px;
+            flex: 1;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        /* Desktop Layout (Side by Side) */
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Main Blog Content -->
+        <div class="main">
+            <h2>Blog Post Title</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae justo ut augue ullamcorper pretium.
+                Aliquam erat
+                volutpat.</p>
+            <p>Curabitur vulputate, sapien sit amet malesuada feugiat, magna nisl bibendum dolor, nec tempus purus orci
+                vel nulla.
+            </p>
+            <p>Donec sodales eros nec nisi ullamcorper, sit amet blandit sapien tincidunt.</p>
+        </div>
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Sidebar</h2>
+            <p>Recent Posts</p>
+            <ul>
+                <li><a href="#">Understanding CSS Grid</a></li>
+                <li><a href="#">Flexbox Tips & Tricks</a></li>
+                <li><a href="#">Responsive Design Basics</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

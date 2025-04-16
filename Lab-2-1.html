@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">`
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Webpage</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    header, footer {
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      padding: 1rem;
+      gap: 1rem;
+    }
+
+    .content, .sidebar {
+      padding: 1rem;
+      background-color: #f4f4f4;
+    }
+
+    .content {
+      flex: 3;
+    }
+
+    .sidebar {
+      flex: 1;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header, footer {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Responsive Web Page</h1>
+  </header>
+
+  <div class="container">
+    <div class="content">
+      <h2>Main Content</h2>
+      <p>This is the main content area. On smaller screens, it stacks above the sidebar.</p>
+    </div>
+    <div class="sidebar">
+      <h3>Sidebar</h3>
+      <p>This is the sidebar content. It moves below the main content on smaller devices.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Responsive Web Design Example</p>
+  </footer>
+</body>
+</html>

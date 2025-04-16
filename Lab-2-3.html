@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Webpage</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    header, footer {
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #444;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle div {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 4px 0;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      padding: 1rem;
+      gap: 1rem;
+    }
+
+    .content, .sidebar {
+      padding: 1rem;
+      background-color: #f4f4f4;
+    }
+
+    .content {
+      flex: 3;
+    }
+
+    .sidebar {
+      flex: 1;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      padding: 1rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 5px;
+    }
+
+    @media (max-width: 992px) {
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #444;
+        width: 100%;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header, footer {
+        font-size: 1rem;
+      }
+    }
+  </style>
+  <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Responsive Web Page</h1>
+  </header>
+
+  <nav>
+    <div class="nav-container">
+      <div class="logo" style="color:white; font-weight:bold;">Logo</div>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="content">
+      <h2>Main Content</h2>
+      <p>This is the main content area. On smaller screens, it stacks above the sidebar.</p>
+    </div>
+    <div class="sidebar">
+      <h3>Sidebar</h3>
+      <p>This is the sidebar content. It moves below the main content on smaller devices.</p>
+    </div>
+  </div>
+
+  <section class="gallery">
+    <img src="https://via.placeholder.com/300x200" alt="Image 1">
+    <img src="https://via.placeholder.com/300x200" alt="Image 2">
+    <img src="https://via.placeholder.com/300x200" alt="Image 3">
+    <img src="https://via.placeholder.com/300x200" alt="Image 4">
+    <img src="https://via.placeholder.com/300x200" alt="Image 5">
+    <img src="https://via.placeholder.com/300x200" alt="Image 6">
+    <img src="https://via.placeholder.com/300x200" alt="Image 7">
+    <img src="https://via.placeholder.com/300x200" alt="Image 8">
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Responsive Web Design Example</p>
+  </footer>
+</body>
+</html>
