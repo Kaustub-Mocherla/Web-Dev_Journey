@@ -1,124 +1,749 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vaishnavi Mocherla | Data Engineer & Analyst</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      scroll-behavior: smooth;
-    }
-    section {
-      padding: 60px 0;
-    }
-    .navbar {
-      background-color: #343a40;
-    }
-    .navbar a {
-      color: white;
-    }
-    .hero {
-      background-color: #f8f9fa;
-      padding: 100px 0;
-      text-align: center;
-    }
-    .project-card {
-      margin-bottom: 20px;
-    }
-    footer {
-      background-color: #343a40;
-      color: white;
-      padding: 20px 0;
-      text-align: center;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">Vaishnavi Mocherla</a>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
+  <div class="loader" id="loader">
+    <div class="loader-content">
+      <div class="loader-text">0%</div>
+      <div class="loader-subtitle">Initializing...</div>
+    </div>
+  </div>
+
+  <header class="header">
+    <nav class="nav">
+      <div class="logo">
+        <span class="logo-text">Vaishnavi Mocherla</span>
+        <span class="logo-subtitle">Data Engineer & Analyst</span>
       </div>
-    </div>
-  </nav>
-
-  <section class="hero" id="home">
-    <div class="container">
-      <h1>Hi, I'm Vaishnavi</h1>
-      <p class="lead">Data Engineer | Applied Data Science | Cloud & LLM Solutions</p>
-      <a href="#projects" class="btn btn-primary">View Projects</a>
-      <a href="Vaishnavi_Resume.pdf" class="btn btn-outline-secondary" target="_blank">Download Resume</a>
-    </div>
-  </section>
-
-  <section id="about">
-    <div class="container">
-      <h2>About Me</h2>
-      <p>I’m a Data Engineer and Applied Data Science student at San Jose State University with experience in AI-powered systems, cloud-native pipelines, and LLM integrations. I focus on building scalable, automated solutions for real-world problems using tools like Azure OpenAI, Spark, Databricks, and Power BI.</p>
-    </div>
-  </section>
-
-  <section id="experience">
-    <div class="container">
-      <h2>Experience</h2>
-      <ul>
-        <li><strong>Informatica (May 2024 – Dec 2024):</strong> AI analytics agent, Databricks + PySpark pipelines, Azure & AWS deployments, Power BI dashboards.</li>
-        <li><strong>Kanerika Software (Aug 2022 – Jun 2023):</strong> Resume–JD fit prediction using BERT, ETL with Airflow, real-time dashboards in Power BI.</li>
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
-    </div>
-  </section>
-
-  <section id="projects">
-    <div class="container">
-      <h2>Projects</h2>
-      <div class="project-card">
-        <h5>Multi-Agent LLM System for SDLC</h5>
-        <p>Built a LangChain-powered multi-agent system simulating software development lifecycle with 88% QA accuracy and <2s latency. Stack: Llama 3, Pinecone, Streamlit.</p>
+      <div class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <canvas id="hero-bg"></canvas>
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">
+            Transforming Data into
+            <span class="highlight">Intelligent Solutions</span>
+          </h1>
+          <p class="hero-description">
+            Data Engineer & Analyst with expertise in building scalable ETL pipelines, AI-driven analytics platforms,
+            and cloud-native data solutions. Currently pursuing M.S. in Applied Data Science at San Jose State
+            University.
+          </p>
+          <div class="hero-actions">
+            <a href="Vaishnavi_Resume.pdf" class="btn btn-primary">Download Resume</a>
+            <a href="#experience" class="btn btn-secondary">View Experience</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-image">
+            <div class="floating-elements">
+              <div class="element element-1"></div>
+              <div class="element element-2"></div>
+              <div class="element element-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">About Me</h2>
+          <p class="section-subtitle">Passionate about turning data into actionable insights</p>
+        </div>
+        <div class="about-content">
+          <div class="about-text">
+            <p class="about-description">
+              I'm a Data Engineer and Analyst with extensive experience in building robust data pipelines,
+              implementing AI-driven solutions, and creating scalable cloud architectures. My expertise spans
+              from traditional ETL processes to cutting-edge machine learning implementations, with a strong
+              focus on delivering business value through data-driven insights.
+            </p>
+            <div class="about-stats">
+
+              <div class="stat">
+                <span class="stat-number">15+</span>
+                <span class="stat-label">Projects Completed</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">55%</span>
+                <span class="stat-label">Efficiency Improvement</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-visual">
+            <div class="tech-orbit">
+              <div class="tech-item">Python</div>
+              <div class="tech-item">Azure</div>
+              <div class="tech-item">Spark</div>
+              <div class="tech-item">AI/ML</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="experience">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Professional Experience</h2>
+          <p class="section-subtitle">Building data solutions across leading organizations</p>
+        </div>
+        <div class="experience-timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="role-title">Teaching Assistant - Distributed Systems</h3>
+                <span class="company">San Jose State University</span>
+                <span class="duration">Aug 2024 - Aug 2025</span>
+              </div>
+              <ul class="achievements">
+                <li>Evaluated projects in distributed systems, cloud computing, and big data technologies</li>
+                <li>Mentored students in Kafka, AWS, Kubernetes, REST APIs, Flask, Django, NoSQL, and React</li>
+                <li>Assisted with course material development and real-world scenario implementations</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tech-tag">Kafka</span>
+                <span class="tech-tag">AWS</span>
+                <span class="tech-tag">Kubernetes</span>
+                <span class="tech-tag">NoSQL</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="role-title">Data and AI Engineer Intern</h3>
+                <span class="company">Informatica</span>
+                <span class="duration">July - Dec 2024</span>
+              </div>
+              <ul class="achievements">
+                <li>Built comprehensive ETL pipelines for structured and unstructured data sources</li>
+                <li>Developed AI-driven ChatGPT interface for automated data retrieval using Azure DBs and Python</li>
+                <li>Optimized Databricks pipelines and SQL queries for enhanced performance</li>
+                <li>Automated NLP-to-SQL processing with Azure OpenAI integration</li>
+                <li>Enhanced data governance frameworks with IDQ and CDI implementations</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tech-tag">Azure OpenAI</span>
+                <span class="tech-tag">Databricks</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">NLP</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="role-title">Data Analyst Intern</h3>
+                <span class="company">Informatica</span>
+                <span class="duration">May - July 2024</span>
+              </div>
+              <ul class="achievements">
+                <li>Developed ETL pipelines with Informatica IICS for consistent enterprise data management</li>
+                <li>Implemented comprehensive data quality checks (IDQ) to fix anomalies and improve accuracy</li>
+                <li>Built interactive Power BI dashboards for real-time analytics and business intelligence</li>
+                <li>Led high-volume dataset migration to Azure cloud infrastructure</li>
+                <li>Automated SQL transformations and Databricks jobs for big data workflows</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tech-tag">Informatica IICS</span>
+                <span class="tech-tag">Power BI</span>
+                <span class="tech-tag">Azure</span>
+                <span class="tech-tag">SQL</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="role-title">Data Engineer Intern</h3>
+                <span class="company">Kanerika Software Pvt Ltd</span>
+                <span class="duration">Jan - Jun 2023</span>
+              </div>
+              <ul class="achievements">
+                <li>Built deep learning resume classification model using TensorFlow and PyTorch</li>
+                <li>Applied advanced NLP techniques with BERT for intelligent resume parsing</li>
+                <li>Automated screening processes, improving efficiency by 55-65%</li>
+                <li>Developed 20+ interactive Power BI dashboards for data visualization</li>
+                <li>Earned Power BI Expert Certification</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tech-tag">TensorFlow</span>
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">BERT</span>
+                <span class="tech-tag">Power BI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="projects-grid"
+      style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; justify-content: center; max-width: 1200px; margin: 0 auto;">
       <div class="project-card">
-        <h5>Cloud-Native Platform for Responsible AI</h5>
-        <p>Deployed graph-aware data pipelines using Neo4j + MLflow + Azure + LangChain with Responsible AI compliance tracking and automated validation reports.</p>
+        <div class="project-header">
+          <h3 class="project-title">US Accidents Analysis</h3>
+          <div class="project-tags">
+            <span class="tag">Apache Spark</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Data Visualization</span>
+          </div>
+        </div>
+        <p class="project-description">Analyzed 2.9M+ US car accident records using Apache Spark. Built and optimized
+          Logistic Regression, Decision Trees, Random Forests. Applied grid search and cross-validation. Deployed on
+          Databricks with advanced visualizations.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3 class="project-title">Pricing Optimization for Guacamole at Chipotle</h3>
+          <div class="project-tags">
+            <span class="tag">Web Scraping</span>
+            <span class="tag">Regression</span>
+            <span class="tag">Tableau</span>
+          </div>
+        </div>
+        <p class="project-description">Analyzed pricing data for 3,000+ Chipotle outlets with USDA reports. Built
+          Tableau dashboards. Used Ridge Regression and Random Forest to predict guacamole ingredient prices with 20%
+          higher accuracy and improved model robustness by 30%.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3 class="project-title">End-to-End Data Engineering on Weather Data</h3>
+          <div class="project-tags">
+            <span class="tag">GCP</span>
+            <span class="tag">Apache Airflow</span>
+            <span class="tag">ARIMA</span>
+            <span class="tag">Tableau</span>
+          </div>
+        </div>
+        <p class="project-description">Designed a real-time weather data pipeline on GCP with Airflow for orchestration.
+          Developed ARIMA model achieving 70% prediction accuracy. Built Tableau dashboard and optimized cloud
+          resources, reducing training costs by 60%.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3 class="project-title">LinkedIn Data Analysis</h3>
+          <div class="project-tags">
+            <span class="tag">MySQL</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">AWS</span>
+            <span class="tag">GCP</span>
+          </div>
+        </div>
+        <p class="project-description">Designed a relational DB for LinkedIn job postings with MySQL and AWS RDS.
+          Migrated to MongoDB for flexible schema and faster queries. Preprocessed data and ran NoSQL queries on GCP,
+          improving speed by 200% with real-time pipelines.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3 class="project-title">Application for the Blind</h3>
+          <div class="project-tags">
+            <span class="tag">NLP</span>
+            <span class="tag">OpenCV</span>
+            <span class="tag">Computer Vision</span>
+          </div>
+        </div>
+        <p class="project-description">Designed an assistive app using NLP and computer vision with OpenCV and
+          Tesseract. Integrated real-time object detection, text recognition, and object-to-text-to-speech conversion.
+          Improved responsiveness by 30% with a user-friendly interface.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3 class="project-title">Drug Recommendation System</h3>
+          <div class="project-tags">
+            <span class="tag">Sentiment Analysis</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">NLP</span>
+          </div>
+        </div>
+        <p class="project-description">Developed a sentiment-driven drug recommendation system using VADER Sentiment
+          Analysis. Integrated into an ML pipeline with Logistic Regression, SVMs, and Naïve Bayes. Achieved 98%
+          accuracy for top and bottom drug suggestions.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3 class="project-title">Construction Permit Data Analysis</h3>
+          <div class="project-tags">
+            <span class="tag">Power BI</span>
+            <span class="tag">Tableau</span>
+          </div>
+        </div>
+        <p class="project-description">Analyzed Seattle building permits dataset to uncover trends and market dynamics.
+          Built dynamic dashboards in Power BI and Tableau with maps and storytelling features. Provided data-driven
+          investment recommendations.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3 class="project-title">Resume Classification Model</h3>
+          <div class="project-tags">
+            <span class="tag">NLP</span>
+            <span class="tag">LLMs</span>
+            <span class="tag">Deep Learning</span>
+          </div>
+        </div>
+        <p class="project-description">Built an intelligent resume classification system using LLMs, bag-of-words, and
+          LSTM model. Parsed and matched resumes to job requirements, automating initial screening with 55–65% improved
+          accuracy.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3 class="project-title">Fine-Tuning Gemma Model for Translation</h3>
+          <div class="project-tags">
+            <span class="tag">NLP</span>
+            <span class="tag">QLoRA</span>
+            <span class="tag">LLMs</span>
+          </div>
+        </div>
+        <p class="project-description">Fine-tuned Gemma 2B model using QLoRA for multi-language translation (Telugu,
+          Marathi, Nepali, Urdu). Achieved BLEU 0.8073, ROUGE-L 0.9030, and optimized inference time with UI for
+          real-time user feedback.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3 class="project-title">Carbon Score Prediction</h3>
+          <div class="project-tags">
+            <span class="tag">Time Series</span>
+            <span class="tag">Prophet Model</span>
+            <span class="tag">PySpark</span>
+          </div>
+        </div>
+        <p class="project-description">Built a carbon footprint prediction model with EPA data (2000–2023). Used
+          Prophet, ARIMA, SARIMA models. Achieved high accuracy with real-time streaming and hybrid model
+          recommendations.</p>
       </div>
     </div>
-  </section>
 
-  <section id="skills">
-    <div class="container">
-      <h2>Technical Skills</h2>
-      <ul>
-        <li><strong>Languages:</strong> Python, SQL, R</li>
-        <li><strong>Data Engineering:</strong> Spark, Kafka, Databricks, Snowflake</li>
-        <li><strong>Cloud & DevOps:</strong> Azure, AWS, Docker, Kubernetes, Terraform</li>
-        <li><strong>BI & Analytics:</strong> Power BI, Tableau, Looker</li>
-        <li><strong>LLMs & GenAI:</strong> LangChain, Pinecone, Semantic Kernel, Prompt Engineering</li>
-      </ul>
-    </div>
-  </section>
+    <section id="skills" class="skills">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Technical Expertise</h2>
+          <p class="section-subtitle">Comprehensive skills across the data engineering stack</p>
+        </div>
+        <div class="skills-content">
+          <div class="skill-category">
+            <h3 class="category-title">Programming Languages</h3>
+            <div class="skill-items">
+              <div class="skill-item">
+                <span class="skill-name">Python</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 95%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">SQL</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 92%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">PySpark</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 88%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">R</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 75%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-  <section id="contact">
-    <div class="container">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:vmocherla25@gmail.com">vmocherla25@gmail.com</a></p>
-      <p>Phone: +1 (530) 407-3384</p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/vaishnavi-mocherla/" target="_blank">vaishnavi-mocherla</a></p>
-      <p>GitHub: <a href="https://github.com/Vaishnavi-mocherla" target="_blank">Vaishnavi-mocherla</a></p>
-    </div>
-  </section>
+          <div class="skill-category">
+            <h3 class="category-title">Data Engineering Tools</h3>
+            <div class="skill-items">
+              <div class="skill-item">
+                <span class="skill-name">Informatica IICS</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 90%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Apache Airflow</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Databricks</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 88%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Apache Kafka</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 80%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-  <footer>
+          <div class="skill-category">
+            <h3 class="category-title">Cloud Platforms</h3>
+            <div class="skill-items">
+              <div class="skill-item">
+                <span class="skill-name">Azure</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 90%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">AWS</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 82%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Google Cloud Platform</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 78%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="category-title">AI/ML & Analytics</h3>
+            <div class="skill-items">
+              <div class="skill-item">
+                <span class="skill-name">TensorFlow</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">PyTorch</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 80%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">NLP & LLMs</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 87%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">OpenCV</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 75%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="category-title">Visualization & BI</h3>
+            <div class="skill-items">
+              <div class="skill-item">
+                <span class="skill-name">Power BI</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 95%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Tableau</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 88%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="category-title">Databases & Frameworks</h3>
+            <div class="skill-items">
+              <div class="skill-item">
+                <span class="skill-name">MySQL</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 90%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">MongoDB</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 82%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Flask/Django</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 80%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">React</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 75%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="certifications"
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 100px auto 0 auto;">
+          <h3 class="certifications-title"
+            style="grid-column: 1 / -1; text-align: center; font-size: 2rem; margin-bottom: 2rem;">Certifications</h3>
+
+          <div class="cert-item"
+            style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem 1.5rem; box-shadow: 0 4px 15px rgba(74,158,255,0.2);">
+            <span class="cert-badge" style="font-size: 1.8rem; margin-right: 1rem;">🎓</span>
+            <span class="cert-name">Advanced Artificial Intelligence and Machine Learning Application – NIT
+              Warangal</span>
+          </div>
+          <div class="cert-item"
+            style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem 1.5rem; box-shadow: 0 4px 15px rgba(74,158,255,0.2);">
+            <span class="cert-badge" style="font-size: 1.8rem; margin-right: 1rem;">☁️</span>
+            <span class="cert-name">Google Cloud Platform – Google</span>
+          </div>
+          <div class="cert-item"
+            style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem 1.5rem; box-shadow: 0 4px 15px rgba(74,158,255,0.2);">
+            <span class="cert-badge" style="font-size: 1.8rem; margin-right: 1rem;">💻</span>
+            <span class="cert-name">NVIDIA DLI Certificate – Fundamentals of Deep Learning – NVIDIA</span>
+          </div>
+          <div class="cert-item"
+            style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem 1.5rem; box-shadow: 0 4px 15px rgba(74,158,255,0.2);">
+            <span class="cert-badge" style="font-size: 1.8rem; margin-right: 1rem;">🐍</span>
+            <span class="cert-name">Using Python to Access Web Data – University of Michigan</span>
+          </div>
+          <div class="cert-item"
+            style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem 1.5rem; box-shadow: 0 4px 15px rgba(74,158,255,0.2);">
+            <span class="cert-badge" style="font-size: 1.8rem; margin-right: 1rem;">🐍</span>
+            <span class="cert-name">Python Data Structures – University of Michigan</span>
+          </div>
+          <div class="cert-item"
+            style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem 1.5rem; box-shadow: 0 4px 15px rgba(74,158,255,0.2);">
+            <span class="cert-badge" style="font-size: 1.8rem; margin-right: 1rem;">🐍</span>
+            <span class="cert-name">Programming for Everybody (Getting Started with Python) – University of
+              Michigan</span>
+          </div>
+          <div class="cert-item"
+            style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem 1.5rem; box-shadow: 0 4px 15px rgba(74,158,255,0.2);">
+            <span class="cert-badge" style="font-size: 1.8rem; margin-right: 1rem;">📊</span>
+            <span class="cert-name">Machine Learning – Stanford University</span>
+          </div>
+          <div class="cert-item"
+            style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem 1.5rem; box-shadow: 0 4px 15px rgba(74,158,255,0.2);">
+            <span class="cert-badge" style="font-size: 1.8rem; margin-right: 1rem;">📈</span>
+            <span class="cert-name">Incorta Certified – Incorta</span>
+          </div>
+          <div class="cert-item"
+            style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem 1.5rem; box-shadow: 0 4px 15px rgba(74,158,255,0.2);">
+            <span class="cert-badge" style="font-size: 1.8rem; margin-right: 1rem;">🗂️</span>
+            <span class="cert-name">Microsoft Certified Power BI Data Analyst Associate – Microsoft</span>
+          </div>
+          <div class="cert-item"
+            style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem 1.5rem; box-shadow: 0 4px 15px rgba(74,158,255,0.2);">
+            <span class="cert-badge" style="font-size: 1.8rem; margin-right: 1rem;">🔍</span>
+            <span class="cert-name">Power BI Expert Certification</span>
+          </div>
+        </div>
+
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Let's Connect</h2>
+          <p class="section-subtitle">Ready to build something amazing together?</p>
+        </div>
+        <div class="contact-content">
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">📧</div>
+              <div class="contact-details">
+                <h3>Email</h3>
+                <a href="mailto:vmocherla25@gmail.com">vmocherla25@gmail.com</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">💼</div>
+              <div class="contact-details">
+                <h3>LinkedIn</h3>
+                <a href="https://linkedin.com/in/vaishnavi-mocherla"
+                  target="_blank">linkedin.com/in/vaishnavi-mocherla</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">🔗</div>
+              <div class="contact-details">
+                <h3>GitHub</h3>
+                <a href="https://github.com/Vaishnavi-mocherla" target="_blank">github.com/Vaishnavi-mocherla</a>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form">
+            <form class="form">
+              <div class="form-group">
+                <input type="text" placeholder="Your Name" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <input type="email" placeholder="Your Email" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <textarea placeholder="Your Message" class="form-textarea" rows="5" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
     <div class="container">
-      <p>&copy; 2025 Vaishnavi Mocherla. All rights reserved.</p>
+      <div class="footer-content">
+        <div class="footer-left">
+          <p>&copy; 2025 Vaishnavi Mocherla. All rights reserved.</p>
+        </div>
+        <div class="footer-right">
+          <div class="social-links">
+            <a href="https://linkedin.com/in/vaishnavi-mocherla" target="_blank" class="social-link">LinkedIn</a>
+            <a href="https://github.com/Vaishnavi-mocherla" target="_blank" class="social-link">GitHub</a>
+            <a href="mailto:vmocherla25@gmail.com" class="social-link">Email</a>
+          </div>
+        </div>
+      </div>
     </div>
   </footer>
 
+  <script>
+    // Loading animation
+    window.addEventListener('load', function () {
+      const loader = document.getElementById('loader');
+      const loaderText = document.querySelector('.loader-text');
+      let progress = 0;
+
+      const interval = setInterval(() => {
+        progress += Math.random() * 15;
+        if (progress >= 100) {
+          progress = 100;
+          loaderText.textContent = '100%';
+          setTimeout(() => {
+            loader.style.opacity = '0';
+            setTimeout(() => {
+              loader.style.display = 'none';
+            }, 500);
+          }, 500);
+          clearInterval(interval);
+        } else {
+          loaderText.textContent = Math.floor(progress) + '%';
+        }
+      }, 100);
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Mobile navigation toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      navToggle.classList.toggle('active');
+    });
+
+
+
+    const canvas = document.getElementById('hero-bg');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+
+    function init() {
+      resize();
+      for (let i = 0; i < 50; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 2 + 1,
+          dx: (Math.random() - 0.5) * 0.5,
+          dy: (Math.random() - 0.5) * 0.5
+        });
+      }
+      animate();
+    }
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = 'rgba(74, 158, 255, 0.3)';
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+        if (p.x < 0 || p.x > width) p.dx *= -1;
+        if (p.y < 0 || p.y > height) p.dy *= -1;
+      });
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', resize);
+    init();
+  </script>
 </body>
+
 </html>
