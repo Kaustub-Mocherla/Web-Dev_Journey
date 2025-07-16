@@ -210,151 +210,164 @@
         </div>
       </div>
     </section>
+    <section id="projects" class="projects">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Projects</h2>
+          <p class="section-subtitle">Showcasing impactful data engineering and analytics solutions</p>
+        </div>
+        <div class="projects-grid"
+          style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; justify-content: center; max-width: 1200px; margin: 0 auto;">
+          <div class="project-card">
+            <div class="project-header">
+              <h3 class="project-title">US Accidents Analysis</h3>
+              <div class="project-tags">
+                <span class="tag">Apache Spark</span>
+                <span class="tag">Machine Learning</span>
+                <span class="tag">Data Visualization</span>
+              </div>
+            </div>
+            <p class="project-description">Analyzed 2.9M+ US car accident records using Apache Spark. Built and
+              optimized
+              Logistic Regression, Decision Trees, Random Forests. Applied grid search and cross-validation. Deployed on
+              Databricks with advanced visualizations.</p>
+          </div>
 
-    <div class="projects-grid"
-      style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; justify-content: center; max-width: 1200px; margin: 0 auto;">
-      <div class="project-card">
-        <div class="project-header">
-          <h3 class="project-title">US Accidents Analysis</h3>
-          <div class="project-tags">
-            <span class="tag">Apache Spark</span>
-            <span class="tag">Machine Learning</span>
-            <span class="tag">Data Visualization</span>
+          <div class="project-card">
+            <div class="project-header">
+              <h3 class="project-title">Pricing Optimization for Guacamole at Chipotle</h3>
+              <div class="project-tags">
+                <span class="tag">Web Scraping</span>
+                <span class="tag">Regression</span>
+                <span class="tag">Tableau</span>
+              </div>
+            </div>
+            <p class="project-description">Analyzed pricing data for 3,000+ Chipotle outlets with USDA reports. Built
+              Tableau dashboards. Used Ridge Regression and Random Forest to predict guacamole ingredient prices with
+              20%
+              higher accuracy and improved model robustness by 30%.</p>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <h3 class="project-title">End-to-End Data Engineering on Weather Data</h3>
+              <div class="project-tags">
+                <span class="tag">GCP</span>
+                <span class="tag">Apache Airflow</span>
+                <span class="tag">ARIMA</span>
+                <span class="tag">Tableau</span>
+              </div>
+            </div>
+            <p class="project-description">Designed a real-time weather data pipeline on GCP with Airflow for
+              orchestration.
+              Developed ARIMA model achieving 70% prediction accuracy. Built Tableau dashboard and optimized cloud
+              resources, reducing training costs by 60%.</p>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <h3 class="project-title">LinkedIn Data Analysis</h3>
+              <div class="project-tags">
+                <span class="tag">MySQL</span>
+                <span class="tag">MongoDB</span>
+                <span class="tag">AWS</span>
+                <span class="tag">GCP</span>
+              </div>
+            </div>
+            <p class="project-description">Designed a relational DB for LinkedIn job postings with MySQL and AWS RDS.
+              Migrated to MongoDB for flexible schema and faster queries. Preprocessed data and ran NoSQL queries on
+              GCP,
+              improving speed by 200% with real-time pipelines.</p>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <h3 class="project-title">Application for the Blind</h3>
+              <div class="project-tags">
+                <span class="tag">NLP</span>
+                <span class="tag">OpenCV</span>
+                <span class="tag">Computer Vision</span>
+              </div>
+            </div>
+            <p class="project-description">Designed an assistive app using NLP and computer vision with OpenCV and
+              Tesseract. Integrated real-time object detection, text recognition, and object-to-text-to-speech
+              conversion.
+              Improved responsiveness by 30% with a user-friendly interface.</p>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <h3 class="project-title">Drug Recommendation System</h3>
+              <div class="project-tags">
+                <span class="tag">Sentiment Analysis</span>
+                <span class="tag">Machine Learning</span>
+                <span class="tag">NLP</span>
+              </div>
+            </div>
+            <p class="project-description">Developed a sentiment-driven drug recommendation system using VADER Sentiment
+              Analysis. Integrated into an ML pipeline with Logistic Regression, SVMs, and Naïve Bayes. Achieved 98%
+              accuracy for top and bottom drug suggestions.</p>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <h3 class="project-title">Construction Permit Data Analysis</h3>
+              <div class="project-tags">
+                <span class="tag">Power BI</span>
+                <span class="tag">Tableau</span>
+              </div>
+            </div>
+            <p class="project-description">Analyzed Seattle building permits dataset to uncover trends and market
+              dynamics.
+              Built dynamic dashboards in Power BI and Tableau with maps and storytelling features. Provided data-driven
+              investment recommendations.</p>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <h3 class="project-title">Resume Classification Model</h3>
+              <div class="project-tags">
+                <span class="tag">NLP</span>
+                <span class="tag">LLMs</span>
+                <span class="tag">Deep Learning</span>
+              </div>
+            </div>
+            <p class="project-description">Built an intelligent resume classification system using LLMs, bag-of-words,
+              and
+              LSTM model. Parsed and matched resumes to job requirements, automating initial screening with 55–65%
+              improved
+              accuracy.</p>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <h3 class="project-title">Fine-Tuning Gemma Model for Translation</h3>
+              <div class="project-tags">
+                <span class="tag">NLP</span>
+                <span class="tag">QLoRA</span>
+                <span class="tag">LLMs</span>
+              </div>
+            </div>
+            <p class="project-description">Fine-tuned Gemma 2B model using QLoRA for multi-language translation (Telugu,
+              Marathi, Nepali, Urdu). Achieved BLEU 0.8073, ROUGE-L 0.9030, and optimized inference time with UI for
+              real-time user feedback.</p>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <h3 class="project-title">Carbon Score Prediction</h3>
+              <div class="project-tags">
+                <span class="tag">Time Series</span>
+                <span class="tag">Prophet Model</span>
+                <span class="tag">PySpark</span>
+              </div>
+            </div>
+            <p class="project-description">Built a carbon footprint prediction model with EPA data (2000–2023). Used
+              Prophet, ARIMA, SARIMA models. Achieved high accuracy with real-time streaming and hybrid model
+              recommendations.</p>
           </div>
         </div>
-        <p class="project-description">Analyzed 2.9M+ US car accident records using Apache Spark. Built and optimized
-          Logistic Regression, Decision Trees, Random Forests. Applied grid search and cross-validation. Deployed on
-          Databricks with advanced visualizations.</p>
-      </div>
-
-      <div class="project-card">
-        <div class="project-header">
-          <h3 class="project-title">Pricing Optimization for Guacamole at Chipotle</h3>
-          <div class="project-tags">
-            <span class="tag">Web Scraping</span>
-            <span class="tag">Regression</span>
-            <span class="tag">Tableau</span>
-          </div>
-        </div>
-        <p class="project-description">Analyzed pricing data for 3,000+ Chipotle outlets with USDA reports. Built
-          Tableau dashboards. Used Ridge Regression and Random Forest to predict guacamole ingredient prices with 20%
-          higher accuracy and improved model robustness by 30%.</p>
-      </div>
-
-      <div class="project-card">
-        <div class="project-header">
-          <h3 class="project-title">End-to-End Data Engineering on Weather Data</h3>
-          <div class="project-tags">
-            <span class="tag">GCP</span>
-            <span class="tag">Apache Airflow</span>
-            <span class="tag">ARIMA</span>
-            <span class="tag">Tableau</span>
-          </div>
-        </div>
-        <p class="project-description">Designed a real-time weather data pipeline on GCP with Airflow for orchestration.
-          Developed ARIMA model achieving 70% prediction accuracy. Built Tableau dashboard and optimized cloud
-          resources, reducing training costs by 60%.</p>
-      </div>
-
-      <div class="project-card">
-        <div class="project-header">
-          <h3 class="project-title">LinkedIn Data Analysis</h3>
-          <div class="project-tags">
-            <span class="tag">MySQL</span>
-            <span class="tag">MongoDB</span>
-            <span class="tag">AWS</span>
-            <span class="tag">GCP</span>
-          </div>
-        </div>
-        <p class="project-description">Designed a relational DB for LinkedIn job postings with MySQL and AWS RDS.
-          Migrated to MongoDB for flexible schema and faster queries. Preprocessed data and ran NoSQL queries on GCP,
-          improving speed by 200% with real-time pipelines.</p>
-      </div>
-
-      <div class="project-card">
-        <div class="project-header">
-          <h3 class="project-title">Application for the Blind</h3>
-          <div class="project-tags">
-            <span class="tag">NLP</span>
-            <span class="tag">OpenCV</span>
-            <span class="tag">Computer Vision</span>
-          </div>
-        </div>
-        <p class="project-description">Designed an assistive app using NLP and computer vision with OpenCV and
-          Tesseract. Integrated real-time object detection, text recognition, and object-to-text-to-speech conversion.
-          Improved responsiveness by 30% with a user-friendly interface.</p>
-      </div>
-
-      <div class="project-card">
-        <div class="project-header">
-          <h3 class="project-title">Drug Recommendation System</h3>
-          <div class="project-tags">
-            <span class="tag">Sentiment Analysis</span>
-            <span class="tag">Machine Learning</span>
-            <span class="tag">NLP</span>
-          </div>
-        </div>
-        <p class="project-description">Developed a sentiment-driven drug recommendation system using VADER Sentiment
-          Analysis. Integrated into an ML pipeline with Logistic Regression, SVMs, and Naïve Bayes. Achieved 98%
-          accuracy for top and bottom drug suggestions.</p>
-      </div>
-
-      <div class="project-card">
-        <div class="project-header">
-          <h3 class="project-title">Construction Permit Data Analysis</h3>
-          <div class="project-tags">
-            <span class="tag">Power BI</span>
-            <span class="tag">Tableau</span>
-          </div>
-        </div>
-        <p class="project-description">Analyzed Seattle building permits dataset to uncover trends and market dynamics.
-          Built dynamic dashboards in Power BI and Tableau with maps and storytelling features. Provided data-driven
-          investment recommendations.</p>
-      </div>
-
-      <div class="project-card">
-        <div class="project-header">
-          <h3 class="project-title">Resume Classification Model</h3>
-          <div class="project-tags">
-            <span class="tag">NLP</span>
-            <span class="tag">LLMs</span>
-            <span class="tag">Deep Learning</span>
-          </div>
-        </div>
-        <p class="project-description">Built an intelligent resume classification system using LLMs, bag-of-words, and
-          LSTM model. Parsed and matched resumes to job requirements, automating initial screening with 55–65% improved
-          accuracy.</p>
-      </div>
-
-      <div class="project-card">
-        <div class="project-header">
-          <h3 class="project-title">Fine-Tuning Gemma Model for Translation</h3>
-          <div class="project-tags">
-            <span class="tag">NLP</span>
-            <span class="tag">QLoRA</span>
-            <span class="tag">LLMs</span>
-          </div>
-        </div>
-        <p class="project-description">Fine-tuned Gemma 2B model using QLoRA for multi-language translation (Telugu,
-          Marathi, Nepali, Urdu). Achieved BLEU 0.8073, ROUGE-L 0.9030, and optimized inference time with UI for
-          real-time user feedback.</p>
-      </div>
-
-      <div class="project-card">
-        <div class="project-header">
-          <h3 class="project-title">Carbon Score Prediction</h3>
-          <div class="project-tags">
-            <span class="tag">Time Series</span>
-            <span class="tag">Prophet Model</span>
-            <span class="tag">PySpark</span>
-          </div>
-        </div>
-        <p class="project-description">Built a carbon footprint prediction model with EPA data (2000–2023). Used
-          Prophet, ARIMA, SARIMA models. Achieved high accuracy with real-time streaming and hybrid model
-          recommendations.</p>
-      </div>
-    </div>
-
+    </section>
     <section id="skills" class="skills">
       <div class="container">
         <div class="section-header">
