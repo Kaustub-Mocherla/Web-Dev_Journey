@@ -8,6 +8,147 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const projects = [
+      {
+        title: "LLMs for Multi-Agent Collaboration in SDLC",
+        tags: ["LLMs", "Airflow", "LangGraph", "RAG", "Snowflake"],
+        category: "LLMs",
+        summary:
+          "Developed a multi-agent system using LLMs like Falcon, LLaMA, Mistral, and CodeT5 to simulate SDLC roles. Used LangGraph for coordination, RAG for grounding, and Airflow for orchestration. Automated code, tests, SQL scripts, and deployments across systems—showcased via Jupyter notebooks.",
+        github: "#",
+      },
+      {
+        title: "End-to-End Weather Data Pipeline",
+        tags: ["GCP", "Apache Airflow", "ARIMA", "Tableau"],
+        category: "ETL",
+        summary:
+          "Built an end-to-end weather forecasting pipeline on GCP using Airflow and ARIMA models. Automated ingestion, preprocessing, forecasting, and reporting. Visualized in Tableau.",
+        github: "#"
+      },
+       {
+        title: "Fine-Tuning Gemma Model",
+        tags: ["LLMs", "QLoRA", "NLP"],
+        category: "LLMs",
+        summary:
+          "Fine-tuned Google’s Gemma 2B using QLoRA for multilingual translation. Used huggingface/peft with bitsandbytes to optimize memory usage. Evaluated using BLEU and ROUGE scores with multilingual datasets.",
+        github: "#"
+      },
+      {
+        title: "US Accidents Analysis",
+        tags: ["Apache Spark", "Machine Learning", "Data Visualization"],
+        category: "ETL",
+        summary:
+          "Analyzed 2.9M+ US car accident records using Apache Spark. Built and optimized Logistic Regression, Decision Trees, Random Forests. Applied grid search and cross-validation. Deployed on Databricks with dashboards included.",
+        github: "#"
+      },
+     
+      {
+        title: "Construction Permit Analysis",
+        tags: ["Power BI", "Tableau"],
+        category: "BI",
+        summary:
+          "Analyzed Seattle construction permit data to understand regional development. Created Power BI dashboards with interactive filters, drill-downs, and slicers. Included Tableau dashboards for city-level filtering and analytics.",
+        github: "#"
+      },
+      {
+        title: "Pricing Optimization for Guacamole at Chipotle",
+        tags: ["Web Scraping", "Regression", "Tableau"],
+        category: "ETL",
+        summary:
+          "Analyzed pricing data for 3,000+ Chipotle units with USDA reports. Built Tableau dashboards. Used Ridge Regression and Random Forest to predict guacamole ingredient prices with 20% higher accuracy and improved model robustness by 30%.",
+        github: "#"
+      },
+      {
+        title: "Carbon Score Prediction",
+        tags: ["Time Series", "Prophet", "PySpark"],
+        category: "ETL",
+        summary:
+          "Predicted carbon emission scores using PySpark and Facebook Prophet. Applied log transformation and cross-validation. Used ensemble models to reduce error by 20%. Forecasts visualized via Power BI.",
+        github: "#"
+      },
+      {
+        title: "Drug Recommendation System",
+        tags: ["Sentiment Analysis", "Machine Learning", "NLP"],
+        category: "LLMs",
+        summary:
+          "Built a sentiment-driven recommendation engine for drug reviews. Used VADER for sentiment labeling and trained Random Forest and Naive Bayes models. Achieved 85% accuracy for sentiment classification.",
+        github: "#"
+      },
+      {
+        title: "Resume Classification Model",
+        tags: ["NLP", "LLMs", "Deep Learning"],
+        category: "LLMs",
+        summary:
+          "Created a resume-job classification model using spaCy and deep learning. Used sentence embeddings for similarity scoring and built classifier for role tagging. Increased precision by 60%.",
+        github: "#"
+      },
+      {
+        title: "Application for the Blind",
+        tags: ["NLP", "OpenCV", "Computer Vision"],
+        category: "LLMs",
+        summary:
+          "Designed a computer vision-based app for visually impaired users. Converted visual cues to voice using OCR, NLP, and gTTS. Used OpenCV for real-time object detection and NLP for contextual output.",
+        github: "#"
+      },
+      
+      {
+        title: "LinkedIn Data Analysis",
+        tags: ["MySQL", "MongoDB", "AWS", "GCP"],
+        category: "ETL",
+        summary:
+          "Extracted, transformed, and migrated job data from MySQL to MongoDB. Hosted on AWS and visualized with GCP Data Studio. Analyzed hiring patterns by region and tech stack.",
+        github: "#"
+      },
+
+      {
+  title: "Portfolio Website",
+  tags: ["HTML", "CSS", "JavaScript", "Responsive Design", "Vanilla JS"],
+  category: "UI",
+  summary: "Designed and developed a fully responsive portfolio website from scratch to showcase data engineering projects, professional experience, and academic work. Implemented dynamic project filtering, timeline animations, and reusable components without using React or external libraries.",
+  github: "#"
+}
+
+    ];
+
+
+    const grid = document.getElementById("projectGrid");
+    const buttons = document.querySelectorAll(".filter-btn");
+
+    function renderProjects(filter) {
+      grid.innerHTML = "";
+      const filtered = filter === "All" ? projects : projects.filter(p => p.category === filter);
+      filtered.forEach(project => {
+        const card = document.createElement("div");
+        card.className = "project-card";
+        card.innerHTML = `
+          <h3>${project.title}</h3>
+          <div class="project-tags">
+            ${project.tags.map(tag => `<span>${tag}</span>`).join("")}
+          </div>
+          <p>${project.summary}</p>
+          <div class="project-links">
+           <a href="${project.github}" target="_blank" class="github-link">
+          <img src="assets/icons/github.svg" alt="GitHub" class="github-icon" />GitHub</a>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelector(".filter-btn.active").classList.remove("active");
+        btn.classList.add("active");
+        renderProjects(btn.dataset.category);
+      });
+    });
+
+    renderProjects("All");
+  });
+</script>
 
 <body>
   <div class="loader" id="loader">
@@ -159,417 +300,253 @@
     </section>
 
     <section id="experience" class="experience">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Professional Experience</h2>
+          <p class="section-subtitle">Building data solutions across leading organizations</p>
+        </div>
+
+        <div class="experience-timeline-wrapper">
+          <div class="experience-timeline">
+            <div class="experience-timeline-progress" id="timeline-progress"></div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-header">
+                  <span class="company">
+                    <img src="assets/icons/Informatica_logo.png" alt="Informatica" class="company-banner" />
+
+                  </span>
+                  <h3 class="role-title">Data Engineer – AI & Cloud Systems</h3>
+                  <span class="duration">Redwood City, CA, USA<br> May 2024 – Dec 2024</span>
+                </div>
+                <ul class="achievements">
+                  <li>Built an AI analytics agent with Azure OpenAI + Python for NL-to-SQL translation</li>
+                  <li>Developed scalable ETL pipelines using Informatica IICS, Databricks (PySpark, SQL)</li>
+                  <li>Improved data quality to 99.9% using Informatica IDQ on structured/unstructured data</li>
+                  <li>Managed Spark jobs on AWS EMR with 30% faster execution using spot instance tuning</li>
+                  <li>Migrated 1TB+ data to Azure Data Lake with row-level security & masking via CDAM</li>
+                  <li>Created Power BI dashboards for marketing & ops teams to monitor campaign performance</li>
+                  <li>Deployed containerized workflows using CI/CD pipelines for production reliability</li>
+                </ul>
+                <div class="tech-tags">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">SQL</span>
+                  <span class="tech-tag">Pyspark</span>
+                  <span class="tech-tag">Databricks</span>
+                  <span class="tech-tag">Informatica IICS</span>
+                  <span class="tech-tag">IDQ</span>
+                  <span class="tech-tag">CDAM</span>
+                  <span class="tech-tag">Azure</span>
+                  <span class="tech-tag">AWS EMR</span>
+                  <span class="tech-tag">Power BI</span>
+                  <span class="tech-tag">CI/CD</span>
+                  <span class="tech-tag">Docker</span>
+                  <span class="tech-tag">Azure OpenAI</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-header">
+                  <span class="company">
+                    <img src="assets/icons/kanerika.jpg" alt="Kanerika Inc" class="company-banner" />
+
+                  </span>
+                  <h3 class="role-title">Data Engineer & ML Researcher</h3>
+                  <span class="duration">Hyderabad, India <br> Aug 2022 – Jun 2023</span>
+                </div>
+                <ul class="achievements">
+                  <li>Designed a BERT-based system to evaluate resume–JD match and predict candidate progression,
+                    reducing manual screening by 60% across 100K+ resumes</li>
+                  <li>Built a custom parser to extract structured data from 10+ formats (PDF, DOCX, scanned resumes),
+                    improving parsing accuracy by 70%</li>
+                  <li>Integrated the parser into a real-time ETL pipeline using Airflow, Spark, and Python, storing
+                    results in Azure Data Lake</li>
+                  <li>Developed Power BI dashboards to visualize candidate fit scores and model confidence, enabling
+                    faster decision-making for recruiters</li>
+                  <li>Secured stakeholder approval for beta deployment by presenting a working prototype and analytics
+                    workflow</li>
+                </ul>
+                <div class="tech-tags">
+                  <span class="tech-tag">TensorFlow</span>
+                  <span class="tech-tag">PyTorch</span>
+                  <span class="tech-tag">BERT</span>
+                  <span class="tech-tag">Power BI</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="academic-experience" class="experience">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Academic Experience</h2>
+          <p class="section-subtitle">Where academic research meets real-world data engineering</p>
+        </div>
+
+        <div class="experience-timeline-wrapper">
+          <div class="experience-timeline">
+            <div class="experience-timeline-progress" id="academic-progress"></div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-header">
+                  <span class="company">San José State University</span>
+                  <h3 class="role-title">Data Engineer Student Assistant</h3>
+                  <span class="duration">San Jose, CA <br> Aug 2024 – Jun 2025</span>
+                </div>
+                <ul class="achievements">
+                  <li>Assisted in the graduate course <strong>DATA 236 – Distributed Systems for Data
+                      Engineering</strong></li>
+                  <li>Supported student learning across <strong>Kafka, AWS, Kubernetes, REST APIs, Flask, Django,
+                      NoSQL</strong>, and <strong>full-stack data pipelines</strong></li>
+                  <li>Conducted code reviews and helped optimize distributed system performance and scalability</li>
+                  <li>Mentored students in deploying applications using <strong>React, Flask, and Django</strong> in
+                    cloud-native environments</li>
+                  <li>Collaborated with faculty to prepare course materials and real-world distributed system projects
+                  </li>
+                  <li>Promoted industry-aligned best practices and bridged communication between students and
+                    instructors</li>
+                </ul>
+                <div class="tech-tags">
+                  <span class="tech-tag">Kafka</span>
+                  <span class="tech-tag">AWS</span>
+                  <span class="tech-tag">Kubernetes</span>
+                  <span class="tech-tag">Flask</span>
+                  <span class="tech-tag">Django</span>
+                  <span class="tech-tag">React</span>
+                  <span class="tech-tag">NoSQL</span>
+                  <span class="tech-tag">Cloud Computing</span>
+                  <span class="tech-tag">Distributed Systems</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-header">
+                  <span class="company">San José State University</span>
+                  <h3 class="role-title">Research Assistant – AI & LLMs</h3>
+                  <span class="duration">San Jose, CA <br> Jan 2024 – Jun 2024</span>
+                </div>
+                <ul class="achievements">
+                  <li>Conducted AI research on large language models including <strong>Gemma</strong>, <strong>LLaMA
+                      2</strong>, and <strong>Code LLaMA</strong></li>
+                  <li>Explored <strong>model interpretability</strong> using <strong>Captum</strong> for improved
+                    transparency and debugging</li>
+                  <li>Integrated <strong>LangChain</strong> into LLM workflows to enhance <strong>retrieval-augmented
+                      generation (RAG)</strong> systems</li>
+                  <li>Focused on fine-tuning, evaluation, and adaptability of models across complex <strong>NLP
+                      tasks</strong></li>
+                </ul>
+                <div class="tech-tags">
+                  <span class="tech-tag">LLaMA 2</span>
+                  <span class="tech-tag">Gemma</span>
+                  <span class="tech-tag">Code LLaMA</span>
+                  <span class="tech-tag">LangChain</span>
+                  <span class="tech-tag">Captum</span>
+                  <span class="tech-tag">RAG</span>
+                  <span class="tech-tag">Model Evaluation</span>
+                  <span class="tech-tag">Prompt Engineering</span>
+                  <span class="tech-tag">NLP</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="projects" class="projects">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Industry Ready Projects</h2>
+          <p class="section-subtitle">Showcasing impactful data engineering and analytics solutions</p>
+        </div>
+        <div class="project-filters">
+          <button class="filter-btn active" data-category="All">All</button>
+          <button class="filter-btn" data-category="LLMs">LLMs</button>
+          <button class="filter-btn" data-category="ETL">ETL</button>
+          <button class="filter-btn" data-category="BI">BI</button>
+        </div>
+
+        <div class="project-grid" id="projectGrid"></div>
+
+      </div>
+    </section>
+<section id="technical-expertise" class="skills">
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title">Professional Experience</h2>
-      <p class="section-subtitle">Building data solutions across leading organizations</p>
+      <h2 class="section-title">Technical Expertise</h2>
+      <p class="section-subtitle">Core capabilities across data engineering, cloud, analytics & AI</p>
     </div>
 
-    <div class="experience-timeline-wrapper">
-      <div class="experience-timeline">
-        <div class="experience-timeline-progress" id="timeline-progress"></div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <span class="company">
-                <img src="assets/icons/Informatica_logo.png" alt="Informatica" class="company-banner" />
-              
-              </span>
-              <h3 class="role-title">Data Engineer – AI & Cloud Systems</h3>
-              <span class="duration">Redwood City, CA, USA<br> May 2024 – Dec 2024</span>
-            </div>
-            <ul class="achievements">
-              <li>Built an AI analytics agent with Azure OpenAI + Python for NL-to-SQL translation</li>
-              <li>Developed scalable ETL pipelines using Informatica IICS, Databricks (PySpark, SQL)</li>
-              <li>Improved data quality to 99.9% using Informatica IDQ on structured/unstructured data</li>
-              <li>Managed Spark jobs on AWS EMR with 30% faster execution using spot instance tuning</li>
-              <li>Migrated 1TB+ data to Azure Data Lake with row-level security & masking via CDAM</li>
-              <li>Created Power BI dashboards for marketing & ops teams to monitor campaign performance</li>
-              <li>Deployed containerized workflows using CI/CD pipelines for production reliability</li>
-            </ul>
-            <div class="tech-tags">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">SQL</span>
-              <span class="tech-tag">Pyspark</span>
-              <span class="tech-tag">Databricks</span>
-              <span class="tech-tag">Informatica IICS</span>
-              <span class="tech-tag">IDQ</span>
-              <span class="tech-tag">CDAM</span>
-              <span class="tech-tag">Azure</span>
-              <span class="tech-tag">AWS EMR</span>
-              <span class="tech-tag">Power BI</span>
-              <span class="tech-tag">CI/CD</span>
-              <span class="tech-tag">Docker</span>
-              <span class="tech-tag">Azure OpenAI</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <span class="company">
-                <img src="assets/icons/kanerika.jpg" alt="Kanerika Inc" class="company-banner" />
-               
-              </span>
-              <h3 class="role-title">Data Engineer & ML Researcher</h3>
-              <span class="duration">Hyderabad, India <br> Aug 2022 – Jun 2023</span>
-            </div>
-            <ul class="achievements">
-              <li>Designed a BERT-based system to evaluate resume–JD match and predict candidate progression,
-                reducing manual screening by 60% across 100K+ resumes</li>
-              <li>Built a custom parser to extract structured data from 10+ formats (PDF, DOCX, scanned resumes),
-                improving parsing accuracy by 70%</li>
-              <li>Integrated the parser into a real-time ETL pipeline using Airflow, Spark, and Python, storing
-                results in Azure Data Lake</li>
-              <li>Developed Power BI dashboards to visualize candidate fit scores and model confidence, enabling
-                faster decision-making for recruiters</li>
-              <li>Secured stakeholder approval for beta deployment by presenting a working prototype and analytics
-                workflow</li>
-            </ul>
-            <div class="tech-tags">
-              <span class="tech-tag">TensorFlow</span>
-              <span class="tech-tag">PyTorch</span>
-              <span class="tech-tag">BERT</span>
-              <span class="tech-tag">Power BI</span>
-            </div>
-          </div>
-        </div>
+    <div class="skills-grid">
+      <div class="skill-column">
+        <h3>Programming Languages</h3>
+        <ul>
+          <li><img src="assets/icons/python.svg" alt="Python" class="skill-icon" />Python</li>
+          <li><img src="assets/icons/mysql.svg" alt="SQL" class="skill-icon" />SQL</li>
+          <li><img src="assets/icons/pyspark.svg" alt="PySpark" class="skill-icon" />PySpark</li>
+          <li><img src="assets/icons/r.svg" alt="R" class="skill-icon" />R</li>
+        </ul>
+      </div>
+      <div class="skill-column">
+        <h3>Data Engineering Tools</h3>
+        <ul>
+          <li><img src="assets/icons/informatica.svg" alt="Informatica" class="skill-icon" />Informatica IICS</li>
+          <li><img src="assets/icons/airflow.svg" alt="Airflow" class="skill-icon" />Apache Airflow</li>
+          <li><img src="assets/icons/databricks.svg" alt="Databricks" class="skill-icon" />Databricks</li>
+          <li><img src="assets/icons/kafka.svg" alt="Kafka" class="skill-icon" />Apache Kafka</li>
+        </ul>
+      </div>
+      <div class="skill-column">
+        <h3>Cloud Platforms</h3>
+        <ul>
+          <li><img src="assets/icons/azure.svg" alt="Azure" class="skill-icon" />Azure</li>
+          <li><img src="assets/icons/aws.svg" alt="AWS" class="skill-icon" />AWS</li>
+          <li><img src="assets/icons/gcp.svg" alt="Google Cloud" class="skill-icon" />Google Cloud Platform</li>
+        </ul>
+      </div>
+      <div class="skill-column">
+        <h3>AI/ML & Analytics</h3>
+        <ul>
+          <li><img src="assets/icons/tensorflow.svg" alt="TensorFlow" class="skill-icon" />TensorFlow</li>
+          <li><img src="assets/icons/pytorch.svg" alt="PyTorch" class="skill-icon" />PyTorch</li>
+          <li><img src="assets/icons/nlp.svg" alt="NLP & LLMs" class="skill-icon" />NLP & LLMs</li>
+          <li><img src="assets/icons/opencv.svg" alt="OpenCV" class="skill-icon" />OpenCV</li>
+        </ul>
+      </div>
+      <div class="skill-column">
+        <h3>Visualization & BI</h3>
+        <ul>
+          <li><img src="assets/icons/powerbi.svg" alt="Power BI" class="skill-icon" />Power BI</li>
+          <li><img src="assets/icons/tableau.svg" alt="Tableau" class="skill-icon" />Tableau</li>
+        </ul>
+      </div>
+      <div class="skill-column">
+        <h3>Databases & Frameworks</h3>
+        <ul>
+          <li><img src="assets/icons/mysql.svg" alt="MySQL" class="skill-icon" />MySQL</li>
+          <li><img src="assets/icons/mongodb.svg" alt="MongoDB" class="skill-icon" />MongoDB</li>
+          <li><img src="assets/icons/flask.svg" alt="Flask/Django" class="skill-icon" />Flask/Django</li>
+          <li><img src="assets/icons/react.svg" alt="React" class="skill-icon" />React</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-    <section id="projects" class="projects">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Projects</h2>
-          <p class="section-subtitle">Showcasing impactful data engineering and analytics solutions</p>
-        </div>
-        <div class="projects-grid"
-          style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; justify-content: center; max-width: 1200px; margin: 0 auto;">
-          <div class="project-card">
-            <div class="project-header">
-              <h3 class="project-title">US Accidents Analysis</h3>
-              <div class="project-tags">
-                <span class="tag">Apache Spark</span>
-                <span class="tag">Machine Learning</span>
-                <span class="tag">Data Visualization</span>
-              </div>
-            </div>
-            <p class="project-description">Analyzed 2.9M+ US car accident records using Apache Spark. Built and
-              optimized
-              Logistic Regression, Decision Trees, Random Forests. Applied grid search and cross-validation. Deployed on
-              Databricks with advanced visualizations.</p>
-          </div>
-
-          <div class="project-card">
-            <div class="project-header">
-              <h3 class="project-title">Pricing Optimization for Guacamole at Chipotle</h3>
-              <div class="project-tags">
-                <span class="tag">Web Scraping</span>
-                <span class="tag">Regression</span>
-                <span class="tag">Tableau</span>
-              </div>
-            </div>
-            <p class="project-description">Analyzed pricing data for 3,000+ Chipotle outlets with USDA reports. Built
-              Tableau dashboards. Used Ridge Regression and Random Forest to predict guacamole ingredient prices with
-              20%
-              higher accuracy and improved model robustness by 30%.</p>
-          </div>
-
-          <div class="project-card">
-            <div class="project-header">
-              <h3 class="project-title">End-to-End Data Engineering on Weather Data</h3>
-              <div class="project-tags">
-                <span class="tag">GCP</span>
-                <span class="tag">Apache Airflow</span>
-                <span class="tag">ARIMA</span>
-                <span class="tag">Tableau</span>
-              </div>
-            </div>
-            <p class="project-description">Designed a real-time weather data pipeline on GCP with Airflow for
-              orchestration.
-              Developed ARIMA model achieving 70% prediction accuracy. Built Tableau dashboard and optimized cloud
-              resources, reducing training costs by 60%.</p>
-          </div>
-
-          <div class="project-card">
-            <div class="project-header">
-              <h3 class="project-title">LinkedIn Data Analysis</h3>
-              <div class="project-tags">
-                <span class="tag">MySQL</span>
-                <span class="tag">MongoDB</span>
-                <span class="tag">AWS</span>
-                <span class="tag">GCP</span>
-              </div>
-            </div>
-            <p class="project-description">Designed a relational DB for LinkedIn job postings with MySQL and AWS RDS.
-              Migrated to MongoDB for flexible schema and faster queries. Preprocessed data and ran NoSQL queries on
-              GCP,
-              improving speed by 200% with real-time pipelines.</p>
-          </div>
-
-          <div class="project-card">
-            <div class="project-header">
-              <h3 class="project-title">Application for the Blind</h3>
-              <div class="project-tags">
-                <span class="tag">NLP</span>
-                <span class="tag">OpenCV</span>
-                <span class="tag">Computer Vision</span>
-              </div>
-            </div>
-            <p class="project-description">Designed an assistive app using NLP and computer vision with OpenCV and
-              Tesseract. Integrated real-time object detection, text recognition, and object-to-text-to-speech
-              conversion.
-              Improved responsiveness by 30% with a user-friendly interface.</p>
-          </div>
-
-          <div class="project-card">
-            <div class="project-header">
-              <h3 class="project-title">Drug Recommendation System</h3>
-              <div class="project-tags">
-                <span class="tag">Sentiment Analysis</span>
-                <span class="tag">Machine Learning</span>
-                <span class="tag">NLP</span>
-              </div>
-            </div>
-            <p class="project-description">Developed a sentiment-driven drug recommendation system using VADER Sentiment
-              Analysis. Integrated into an ML pipeline with Logistic Regression, SVMs, and Naïve Bayes. Achieved 98%
-              accuracy for top and bottom drug suggestions.</p>
-          </div>
-
-          <div class="project-card">
-            <div class="project-header">
-              <h3 class="project-title">Construction Permit Data Analysis</h3>
-              <div class="project-tags">
-                <span class="tag">Power BI</span>
-                <span class="tag">Tableau</span>
-              </div>
-            </div>
-            <p class="project-description">Analyzed Seattle building permits dataset to uncover trends and market
-              dynamics.
-              Built dynamic dashboards in Power BI and Tableau with maps and storytelling features. Provided data-driven
-              investment recommendations.</p>
-          </div>
-
-          <div class="project-card">
-            <div class="project-header">
-              <h3 class="project-title">Resume Classification Model</h3>
-              <div class="project-tags">
-                <span class="tag">NLP</span>
-                <span class="tag">LLMs</span>
-                <span class="tag">Deep Learning</span>
-              </div>
-            </div>
-            <p class="project-description">Built an intelligent resume classification system using LLMs, bag-of-words,
-              and
-              LSTM model. Parsed and matched resumes to job requirements, automating initial screening with 55–65%
-              improved
-              accuracy.</p>
-          </div>
-
-          <div class="project-card">
-            <div class="project-header">
-              <h3 class="project-title">Fine-Tuning Gemma Model for Translation</h3>
-              <div class="project-tags">
-                <span class="tag">NLP</span>
-                <span class="tag">QLoRA</span>
-                <span class="tag">LLMs</span>
-              </div>
-            </div>
-            <p class="project-description">Fine-tuned Gemma 2B model using QLoRA for multi-language translation (Telugu,
-              Marathi, Nepali, Urdu). Achieved BLEU 0.8073, ROUGE-L 0.9030, and optimized inference time with UI for
-              real-time user feedback.</p>
-          </div>
-
-          <div class="project-card">
-            <div class="project-header">
-              <h3 class="project-title">Carbon Score Prediction</h3>
-              <div class="project-tags">
-                <span class="tag">Time Series</span>
-                <span class="tag">Prophet Model</span>
-                <span class="tag">PySpark</span>
-              </div>
-            </div>
-            <p class="project-description">Built a carbon footprint prediction model with EPA data (2000–2023). Used
-              Prophet, ARIMA, SARIMA models. Achieved high accuracy with real-time streaming and hybrid model
-              recommendations.</p>
-          </div>
-        </div>
-    </section>
-    <section id="skills" class="skills">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Technical Expertise</h2>
-          <p class="section-subtitle">Comprehensive skills across the data engineering stack</p>
-        </div>
-        <div class="skills-content">
-          <div class="skill-category">
-            <h3 class="category-title">Programming Languages</h3>
-            <div class="skill-items">
-              <div class="skill-item">
-                <span class="skill-name">Python</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 95%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">SQL</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 92%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">PySpark</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 88%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">R</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 75%"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <h3 class="category-title">Data Engineering Tools</h3>
-            <div class="skill-items">
-              <div class="skill-item">
-                <span class="skill-name">Informatica IICS</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 90%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">Apache Airflow</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 85%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">Databricks</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 88%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">Apache Kafka</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 80%"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <h3 class="category-title">Cloud Platforms</h3>
-            <div class="skill-items">
-              <div class="skill-item">
-                <span class="skill-name">Azure</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 90%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">AWS</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 82%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">Google Cloud Platform</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 78%"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <h3 class="category-title">AI/ML & Analytics</h3>
-            <div class="skill-items">
-              <div class="skill-item">
-                <span class="skill-name">TensorFlow</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 85%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">PyTorch</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 80%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">NLP & LLMs</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 87%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">OpenCV</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 75%"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <h3 class="category-title">Visualization & BI</h3>
-            <div class="skill-items">
-              <div class="skill-item">
-                <span class="skill-name">Power BI</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 95%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">Tableau</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 88%"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <h3 class="category-title">Databases & Frameworks</h3>
-            <div class="skill-items">
-              <div class="skill-item">
-                <span class="skill-name">MySQL</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 90%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">MongoDB</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 82%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">Flask/Django</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 80%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">React</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 75%"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+<section id="certifications" class="certifications">
         <div class="certifications"
           style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 100px auto 0 auto;">
           <h3 class="certifications-title"
@@ -790,32 +767,34 @@
     window.addEventListener('resize', resize);
     init();
 
+    function initTimelineScrollAnimation() {
+      const progressBars = document.querySelectorAll(".experience-timeline-progress");
 
-  function initTimelineScrollAnimation() {
-    const timeline = document.querySelector(".experience-timeline");
-    const progressBar = document.getElementById("timeline-progress");
+      function updateTimelineProgress() {
+        progressBars.forEach(progressBar => {
+          const timeline = progressBar.closest(".experience-timeline");
+          if (!timeline) return;
 
-    if (!timeline || !progressBar) return;
+          const timelineTop = timeline.getBoundingClientRect().top + window.scrollY;
+          const timelineHeight = timeline.offsetHeight;
+          const scrollTop = window.scrollY + window.innerHeight * 0.6;
 
-    function updateTimelineProgress() {
-      const timelineTop = timeline.getBoundingClientRect().top + window.scrollY;
-      const timelineHeight = timeline.offsetHeight;
-      const scrollTop = window.scrollY + window.innerHeight * 0.6;
+          const progress = Math.min(
+            1,
+            Math.max(0, (scrollTop - timelineTop) / timelineHeight)
+          );
 
-      const progress = Math.min(
-        1,
-        Math.max(0, (scrollTop - timelineTop) / timelineHeight)
-      );
+          progressBar.style.height = `${progress * 100}%`;
+        });
+      }
 
-      progressBar.style.height = `${progress * 100}%`;
+      window.addEventListener("scroll", updateTimelineProgress);
+      window.addEventListener("resize", updateTimelineProgress);
+      updateTimelineProgress(); // Run once on load
     }
 
-    window.addEventListener("scroll", updateTimelineProgress);
-    window.addEventListener("resize", updateTimelineProgress);
-    updateTimelineProgress(); // Initialize once
-  }
+    window.addEventListener("DOMContentLoaded", initTimelineScrollAnimation);
 
-  window.addEventListener("DOMContentLoaded", initTimelineScrollAnimation);
 
 
 
