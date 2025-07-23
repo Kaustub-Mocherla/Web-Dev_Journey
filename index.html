@@ -15,6 +15,7 @@
         title: "LLMs for Multi-Agent Collaboration in SDLC",
         tags: ["LLMs", "Airflow", "LangGraph", "RAG", "Snowflake"],
         category: "LLMs",
+        featured: true,
         summary:
           "Developed a multi-agent system using LLMs like Falcon, LLaMA, Mistral, and CodeT5 to simulate SDLC roles. Used LangGraph for coordination, RAG for grounding, and Airflow for orchestration. Automated code, tests, SQL scripts, and deployments across systems—showcased via Jupyter notebooks.",
         github: "#",
@@ -23,6 +24,7 @@
         title: "End-to-End Weather Data Pipeline",
         tags: ["GCP", "Apache Airflow", "ARIMA", "Tableau"],
         category: "ETL",
+        featured: true,
         summary:
           "Built an end-to-end weather forecasting pipeline on GCP using Airflow and ARIMA models. Automated ingestion, preprocessing, forecasting, and reporting. Visualized in Tableau.",
         github: "#"
@@ -31,6 +33,7 @@
         title: "Fine-Tuning Gemma Model",
         tags: ["LLMs", "QLoRA", "NLP"],
         category: "LLMs",
+        featured: true,
         summary:
           "Fine-tuned Google’s Gemma 2B using QLoRA for multilingual translation. Used huggingface/peft with bitsandbytes to optimize memory usage. Evaluated using BLEU and ROUGE scores with multilingual datasets.",
         github: "#"
@@ -39,6 +42,7 @@
         title: "US Accidents Analysis",
         tags: ["Apache Spark", "Machine Learning", "Data Visualization"],
         category: "ETL",
+        featured: true,
         summary:
           "Analyzed 2.9M+ US car accident records using Apache Spark. Built and optimized Logistic Regression, Decision Trees, Random Forests. Applied grid search and cross-validation. Deployed on Databricks with dashboards included.",
         github: "#"
@@ -48,6 +52,7 @@
         title: "Construction Permit Analysis",
         tags: ["Power BI", "Tableau"],
         category: "BI",
+        featured: true,
         summary:
           "Analyzed Seattle construction permit data to understand regional development. Created Power BI dashboards with interactive filters, drill-downs, and slicers. Included Tableau dashboards for city-level filtering and analytics.",
         github: "#"
@@ -56,6 +61,7 @@
         title: "Pricing Optimization for Guacamole at Chipotle",
         tags: ["Web Scraping", "Regression", "Tableau"],
         category: "ETL",
+        featured: true,
         summary:
           "Analyzed pricing data for 3,000+ Chipotle units with USDA reports. Built Tableau dashboards. Used Ridge Regression and Random Forest to predict guacamole ingredient prices with 20% higher accuracy and improved model robustness by 30%.",
         github: "#"
@@ -64,6 +70,7 @@
         title: "Carbon Score Prediction",
         tags: ["Time Series", "Prophet", "PySpark"],
         category: "ETL",
+        featured: false,
         summary:
           "Predicted carbon emission scores using PySpark and Facebook Prophet. Applied log transformation and cross-validation. Used ensemble models to reduce error by 20%. Forecasts visualized via Power BI.",
         github: "#"
@@ -72,6 +79,7 @@
         title: "Drug Recommendation System",
         tags: ["Sentiment Analysis", "Machine Learning", "NLP"],
         category: "LLMs",
+        featured: false,
         summary:
           "Built a sentiment-driven recommendation engine for drug reviews. Used VADER for sentiment labeling and trained Random Forest and Naive Bayes models. Achieved 85% accuracy for sentiment classification.",
         github: "#"
@@ -80,6 +88,7 @@
         title: "Resume Classification Model",
         tags: ["NLP", "LLMs", "Deep Learning"],
         category: "LLMs",
+        featured: false,
         summary:
           "Created a resume-job classification model using spaCy and deep learning. Used sentence embeddings for similarity scoring and built classifier for role tagging. Increased precision by 60%.",
         github: "#"
@@ -88,6 +97,7 @@
         title: "Application for the Blind",
         tags: ["NLP", "OpenCV", "Computer Vision"],
         category: "LLMs",
+        featured: false,
         summary:
           "Designed a computer vision-based app for visually impaired users. Converted visual cues to voice using OCR, NLP, and gTTS. Used OpenCV for real-time object detection and NLP for contextual output.",
         github: "#"
@@ -97,6 +107,7 @@
         title: "LinkedIn Data Analysis",
         tags: ["MySQL", "MongoDB", "AWS", "GCP"],
         category: "ETL",
+        featured: false,
         summary:
           "Extracted, transformed, and migrated job data from MySQL to MongoDB. Hosted on AWS and visualized with GCP Data Studio. Analyzed hiring patterns by region and tech stack.",
         github: "#"
@@ -106,6 +117,7 @@
   title: "Portfolio Website",
   tags: ["HTML", "CSS", "JavaScript", "Responsive Design", "Vanilla JS"],
   category: "UI",
+  featured: false,
   summary: "Designed and developed a fully responsive portfolio website from scratch to showcase data engineering projects, professional experience, and academic work. Implemented dynamic project filtering, timeline animations, and reusable components without using React or external libraries.",
   github: "#"
 }
@@ -115,13 +127,19 @@
 
     const grid = document.getElementById("projectGrid");
     const buttons = document.querySelectorAll(".filter-btn");
+    let isProjectsExpanded = false;
 
-    function renderProjects(filter) {
+    function renderProjects(filter, showAll = false) {
       grid.innerHTML = "";
       const filtered = filter === "All" ? projects : projects.filter(p => p.category === filter);
-      filtered.forEach(project => {
+      
+      // Show only featured projects initially unless expanded or showAll is true
+      const projectsToShow = (showAll || isProjectsExpanded) ? filtered : filtered.filter(p => p.featured);
+      
+      projectsToShow.forEach((project, index) => {
         const card = document.createElement("div");
-        card.className = "project-card";
+        const isExpandable = !project.featured;
+        card.className = `project-card ${isExpandable ? 'expandable-project' : ''}`;
         card.innerHTML = `
           <h3>${project.title}</h3>
           <div class="project-tags">
@@ -142,11 +160,170 @@
       btn.addEventListener("click", () => {
         document.querySelector(".filter-btn.active").classList.remove("active");
         btn.classList.add("active");
+        isProjectsExpanded = false; // Reset expanded state when filter changes
         renderProjects(btn.dataset.category);
+        updateProjectsButton();
       });
     });
 
+    // View More Projects functionality
+    const viewMoreProjectsBtn = document.getElementById('viewMoreProjects');
+    
+    function updateProjectsButton() {
+      const activeFilter = document.querySelector('.filter-btn.active').dataset.category;
+      const filtered = activeFilter === "All" ? projects : projects.filter(p => p.category === activeFilter);
+      const hasExpandableProjects = filtered.some(p => !p.featured);
+      
+      if (hasExpandableProjects) {
+        viewMoreProjectsBtn.style.display = 'block';
+        viewMoreProjectsBtn.querySelector('.btn-text').textContent = isProjectsExpanded ? 'View Less Projects' : 'View More Projects';
+        viewMoreProjectsBtn.classList.toggle('expanded', isProjectsExpanded);
+      } else {
+        viewMoreProjectsBtn.style.display = 'none';
+      }
+    }
+
+    if (viewMoreProjectsBtn) {
+      viewMoreProjectsBtn.addEventListener('click', () => {
+        isProjectsExpanded = !isProjectsExpanded;
+        const activeFilter = document.querySelector('.filter-btn.active').dataset.category;
+        
+        if (isProjectsExpanded) {
+          // Show all projects with staggered animation
+          renderProjects(activeFilter, true);
+          const expandableCards = document.querySelectorAll('.expandable-project');
+          expandableCards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('show');
+            }, index * 100);
+          });
+        } else {
+          // Show only featured projects
+          renderProjects(activeFilter, false);
+          // Scroll back to projects section
+          setTimeout(() => {
+            document.getElementById('projects').scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'start' 
+            });
+          }, 300);
+        }
+        
+        updateProjectsButton();
+      });
+    }
+
     renderProjects("All");
+    updateProjectsButton();
+  });
+
+  // Modern Skills Section Functionality
+  document.addEventListener("DOMContentLoaded", function () {
+    const skillNavBtns = document.querySelectorAll('.skill-nav-btn');
+    const skillCards = document.querySelectorAll('.skill-card');
+
+    // Skill navigation functionality
+    skillNavBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        skillNavBtns.forEach(b => b.classList.remove('active'));
+        // Add active class to clicked button
+        btn.classList.add('active');
+
+        const category = btn.dataset.category;
+
+        // Filter skill cards
+        skillCards.forEach(card => {
+          if (category === 'all' || card.dataset.category === category) {
+            card.style.display = 'block';
+            card.style.animation = 'fadeInUp 0.6s ease forwards';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Animate skill cards on scroll
+    const observeSkills = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.2 });
+
+    skillCards.forEach(card => {
+      observeSkills.observe(card);
+    });
+
+    // Add modern hover effects for skill items
+    const skillItems = document.querySelectorAll('.skill-item');
+    skillItems.forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        // Add subtle glow effect
+        item.style.boxShadow = '0 8px 25px rgba(74, 158, 255, 0.2)';
+      });
+
+      item.addEventListener('mouseleave', () => {
+        // Remove glow effect
+        item.style.boxShadow = '';
+      });
+    });
+
+    // View More Skills functionality
+    const viewMoreBtn = document.getElementById('viewMoreSkills');
+    const expandableSkills = document.querySelectorAll('.expandable-skill');
+    const featuredSkills = document.querySelectorAll('.featured-skill');
+    let isExpanded = false;
+
+    viewMoreBtn.addEventListener('click', () => {
+      isExpanded = !isExpanded;
+      
+      if (isExpanded) {
+        // Show expandable skills with staggered animation
+        expandableSkills.forEach((skill, index) => {
+          setTimeout(() => {
+            skill.classList.add('show');
+          }, index * 100);
+        });
+        
+        // Show expandable skill items in featured cards
+        featuredSkills.forEach(skill => {
+          skill.classList.add('expanded');
+        });
+        
+        // Update button text and state
+        viewMoreBtn.querySelector('.btn-text').textContent = 'View Less Skills';
+        viewMoreBtn.classList.add('expanded');
+      } else {
+        // Hide expandable skill items in featured cards first
+        featuredSkills.forEach(skill => {
+          skill.classList.remove('expanded');
+        });
+        
+        // Hide expandable skills with reverse staggered animation
+        const reversedSkills = [...expandableSkills].reverse();
+        reversedSkills.forEach((skill, index) => {
+          setTimeout(() => {
+            skill.classList.remove('show');
+          }, index * 100);
+        });
+        
+        // Update button text and state
+        viewMoreBtn.querySelector('.btn-text').textContent = 'View More Skills';
+        viewMoreBtn.classList.remove('expanded');
+        
+        // Scroll back to skills section smoothly after animation completes
+        setTimeout(() => {
+          document.getElementById('technical-expertise').scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+          });
+        }, 300);
+      }
+    });
   });
 </script>
 
@@ -168,7 +345,7 @@
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#experience" class="nav-link">Experience</a></li>
         <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#technical-expertise" class="nav-link">Skills</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
       <div class="nav-toggle">
@@ -481,6 +658,16 @@
 
         <div class="project-grid" id="projectGrid"></div>
 
+        <!-- View More Projects Button -->
+        <div class="view-more-container">
+          <button class="view-more-btn" id="viewMoreProjects">
+            <span class="btn-text">View More Projects</span>
+            <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
       </div>
     </section>
 <section id="technical-expertise" class="skills">
@@ -490,59 +677,253 @@
       <p class="section-subtitle">Core capabilities across data engineering, cloud, analytics & AI</p>
     </div>
 
-    <div class="skills-grid">
-      <div class="skill-column">
-        <h3>Programming Languages</h3>
-        <ul>
-          <li><img src="assets/icons/python.svg" alt="Python" class="skill-icon" />Python</li>
-          <li><img src="assets/icons/mysql.svg" alt="SQL" class="skill-icon" />SQL</li>
-          <li><img src="assets/icons/pyspark.png" alt="PySpark" class="skill-icon" />PySpark</li>
-          <li><img src="assets/icons/R_logo.svg.png" alt="R" class="skill-icon" />R</li>
-        </ul>
+    <!-- Skill Category Navigation -->
+    <div class="skill-nav">
+      <button class="skill-nav-btn active" data-category="all">All Skills</button>
+      <button class="skill-nav-btn" data-category="languages">Languages</button>
+      <button class="skill-nav-btn" data-category="tools">Data Tools</button>
+      <button class="skill-nav-btn" data-category="cloud">Cloud</button>
+      <button class="skill-nav-btn" data-category="ai">AI/ML</button>
+      <button class="skill-nav-btn" data-category="viz">Analytics</button>
+    </div>
+
+    <!-- Modern Skills Grid -->
+    <div class="modern-skills-grid">
+      
+      <!-- Programming Languages -->
+      <div class="skill-card featured-skill" data-category="languages">
+        <div class="skill-card-header">
+          <div class="skill-category-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path d="M6 8h.01M6 12h.01M10 8h4M10 12h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Programming Languages</h3>
+          <div class="skill-count">4 Technologies</div>
+        </div>
+        <div class="skill-items">
+          <div class="skill-item">
+            <img src="assets/icons/python.svg" alt="Python" class="modern-skill-icon" />
+            <div class="skill-info">
+              <span class="skill-name">Python</span>
+              <span class="skill-description">Data analysis, ML pipelines, backend development</span>
+            </div>
+          </div>
+          <div class="skill-item">
+            <img src="assets/icons/mysql.svg" alt="SQL" class="modern-skill-icon" />
+            <div class="skill-info">
+              <span class="skill-name">SQL</span>
+              <span class="skill-description">Complex queries, data warehousing, optimization</span>
+            </div>
+          </div>
+          <div class="skill-item expandable-skill">
+            <img src="assets/icons/pyspark.png" alt="PySpark" class="modern-skill-icon" />
+            <div class="skill-info">
+              <span class="skill-name">PySpark</span>
+              <span class="skill-description">Distributed computing, big data processing</span>
+            </div>
+          </div>
+          <div class="skill-item expandable-skill">
+            <img src="assets/icons/R_logo.svg.png" alt="R" class="modern-skill-icon" />
+            <div class="skill-info">
+              <span class="skill-name">R</span>
+              <span class="skill-description">Statistical analysis, data visualization</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="skill-column">
-        <h3>Data Engineering Tools</h3>
-        <ul>
-          <li><img src="assets/icons/iics.png" alt="Informatica" class="skill-icon" />Informatica IICS</li>
-          <li><img src="assets/icons/airflow.png" alt="Airflow" class="skill-icon" />Apache Airflow</li>
-          <li><img src="assets/icons/databricks.svg" alt="Databricks" class="skill-icon" />Databricks</li>
-          <li><img src="assets/icons/kafka.svg" alt="Kafka" class="skill-icon" />Apache Kafka</li>
-        </ul>
+
+      <!-- Data Engineering Tools -->
+      <div class="skill-card featured-skill" data-category="tools">
+        <div class="skill-card-header">
+          <div class="skill-category-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L2 7v10l10 5 10-5V7l-10-5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 7l10 5 10-5M12 22V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Data Engineering Tools</h3>
+          <div class="skill-count">4 Technologies</div>
+        </div>
+        <div class="skill-items">
+          <div class="skill-item">
+            <img src="assets/icons/iics.png" alt="Informatica" class="modern-skill-icon" />
+            <div class="skill-info">
+              <span class="skill-name">Informatica IICS</span>
+              <span class="skill-description">ETL pipelines, data integration, cloud migration</span>
+            </div>
+          </div>
+          <div class="skill-item">
+            <img src="assets/icons/airflow.png" alt="Airflow" class="modern-skill-icon" />
+            <div class="skill-info">
+              <span class="skill-name">Apache Airflow</span>
+              <span class="skill-description">Workflow orchestration, task scheduling</span>
+            </div>
+          </div>
+          <div class="skill-item expandable-skill">
+            <img src="assets/icons/databricks.svg" alt="Databricks" class="modern-skill-icon" />
+            <div class="skill-info">
+              <span class="skill-name">Databricks</span>
+              <span class="skill-description">Unified analytics, collaborative notebooks</span>
+            </div>
+          </div>
+          <div class="skill-item expandable-skill">
+            <img src="assets/icons/kafka.svg" alt="Kafka" class="modern-skill-icon" />
+            <div class="skill-info">
+              <span class="skill-name">Apache Kafka</span>
+              <span class="skill-description">Real-time streaming, event-driven architecture</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="skill-column">
-        <h3>Cloud Platforms</h3>
-        <ul>
-          <li><img src="assets/icons/azure.svg" alt="Azure" class="skill-icon" style="background-color: black;"/>Azure</li>
-          <li><img src="assets/icons/aws.svg" alt="AWS" class="skill-icon" />AWS</li>
-          <li><img src="assets/icons/gcp.svg" alt="Google Cloud" class="skill-icon" />Google Cloud Platform</li>
-        </ul>
+
+      <!-- Cloud Platforms - Now expandable -->
+      <div class="skill-card expandable-skill" data-category="cloud">
+        <div class="skill-card-header">
+          <div class="skill-category-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Cloud Platforms</h3>
+          <div class="skill-count">3 Technologies</div>
+        </div>
+        <div class="skill-items">
+          <div class="skill-item">
+            <img src="assets/icons/azure.svg" alt="Azure" class="modern-skill-icon" style="background-color: #f0f0f0;" />
+            <div class="skill-info">
+              <span class="skill-name">Microsoft Azure</span>
+              <span class="skill-description">Data Lake, AI services, enterprise solutions</span>
+            </div>
+          </div>
+          <div class="skill-item">
+            <img src="assets/icons/aws.svg" alt="AWS" class="modern-skill-icon" />
+            <div class="skill-info">
+              <span class="skill-name">Amazon AWS</span>
+              <span class="skill-description">EMR, S3, Lambda, scalable infrastructure</span>
+            </div>
+          </div>
+          <div class="skill-item">
+            <img src="assets/icons/gcp.svg" alt="Google Cloud" class="modern-skill-icon" />
+            <div class="skill-info">
+              <span class="skill-name">Google Cloud Platform</span>
+              <span class="skill-description">BigQuery, ML Engine, data analytics</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="skill-column">
-        <h3>AI/ML & Analytics</h3>
-        <ul>
-          <li><img src="assets/icons/tensorflow.svg" alt="TensorFlow" class="skill-icon" />TensorFlow</li>
-          <li><img src="assets/icons/pytorch.svg" alt="PyTorch" class="skill-icon" />PyTorch</li>
-          <li><img src="assets/icons/ai-svgrepo-com.svg" alt="NLP & LLMs" class="skill-icon" />NLP & LLMs</li>
-          <li><img src="assets/icons/opencv.svg" alt="OpenCV" class="skill-icon" />OpenCV</li>
-        </ul>
+
+      <!-- AI/ML Section - Now featured -->
+      <div class="skill-card featured-skill" data-category="ai">
+        <div class="skill-card-header">
+          <div class="skill-category-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+              <path d="M12 1v6m0 6v6" stroke="currentColor" stroke-width="2"/>
+              <path d="M21 12h-6m-6 0H3" stroke="currentColor" stroke-width="2"/>
+              <path d="M18.364 5.636l-4.243 4.243m-4.243 4.243l-4.243 4.243" stroke="currentColor" stroke-width="2"/>
+              <path d="M18.364 18.364l-4.243-4.243m-4.243-4.243l-4.243-4.243" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3>AI/ML & Analytics</h3>
+          <div class="skill-count">4 Technologies</div>
+        </div>
+        <div class="skill-items">
+          <div class="skill-item">
+            <img src="assets/icons/tensorflow.svg" alt="TensorFlow" class="modern-skill-icon" />
+            <div class="skill-info">
+              <span class="skill-name">TensorFlow</span>
+              <span class="skill-description">Deep learning, neural networks, model training</span>
+            </div>
+          </div>
+          <div class="skill-item">
+            <img src="assets/icons/pytorch.svg" alt="PyTorch" class="modern-skill-icon" />
+            <div class="skill-info">
+              <span class="skill-name">PyTorch</span>
+              <span class="skill-description">Research, prototyping, dynamic computation</span>
+            </div>
+          </div>
+          <div class="skill-item expandable-skill">
+            <img src="assets/icons/ai-svgrepo-com.svg" alt="NLP & LLMs" class="modern-skill-icon" />
+            <div class="skill-info">
+              <span class="skill-name">NLP & LLMs</span>
+              <span class="skill-description">Language models, text processing, RAG systems</span>
+            </div>
+          </div>
+          <div class="skill-item expandable-skill">
+            <img src="assets/icons/opencv.svg" alt="OpenCV" class="modern-skill-icon" />
+            <div class="skill-info">
+              <span class="skill-name">OpenCV</span>
+              <span class="skill-description">Computer vision, image processing, detection</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="skill-column">
-        <h3>Visualization & BI</h3>
-        <ul>
-          <li><img src="assets/icons/Power-BI-Logo.png" alt="Power BI" class="skill-icon" style="background-color: black;"/>Power BI</li>
-          <li><img src="assets/icons/tableau.svg" alt="Tableau" class="skill-icon" />Tableau</li>
-        </ul>
+
+      <!-- Analytics & Visualization - Now featured -->
+      <div class="skill-card featured-skill" data-category="viz">
+        <div class="skill-card-header">
+          <div class="skill-category-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 3v18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7 16l4-4 4 4 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M17 8v3h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Analytics & Visualization</h3>
+          <div class="skill-count">5 Technologies</div>
+        </div>
+        <div class="skill-items">
+          <div class="skill-item">
+            <img src="assets/icons/Power-BI-Logo.png" alt="Power BI" class="modern-skill-icon" style="background-color: #f0f0f0;" />
+            <div class="skill-info">
+              <span class="skill-name">Power BI</span>
+              <span class="skill-description">Interactive dashboards, business intelligence</span>
+            </div>
+          </div>
+          <div class="skill-item">
+            <img src="assets/icons/tableau.svg" alt="Tableau" class="modern-skill-icon" />
+            <div class="skill-info">
+              <span class="skill-name">Tableau</span>
+              <span class="skill-description">Data visualization, storytelling with data</span>
+            </div>
+          </div>
+          <div class="skill-item expandable-skill">
+            <img src="assets/icons/mysql.svg" alt="MySQL" class="modern-skill-icon" />
+            <div class="skill-info">
+              <span class="skill-name">MySQL</span>
+              <span class="skill-description">Relational databases, query optimization</span>
+            </div>
+          </div>
+          <div class="skill-item expandable-skill">
+            <img src="assets/icons/mongodb.svg" alt="MongoDB" class="modern-skill-icon" />
+            <div class="skill-info">
+              <span class="skill-name">MongoDB</span>
+              <span class="skill-description">NoSQL databases, document storage</span>
+            </div>
+          </div>
+          <div class="skill-item expandable-skill">
+            <img src="assets/icons/react.svg" alt="React" class="modern-skill-icon" />
+            <div class="skill-info">
+              <span class="skill-name">React</span>
+              <span class="skill-description">Frontend development, interactive UIs</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="skill-column">
-        <h3>Databases & Frameworks</h3>
-        <ul>
-          <li><img src="assets/icons/mysql.svg" alt="MySQL" class="skill-icon" />MySQL</li>
-          <li><img src="assets/icons/mongodb.svg" alt="MongoDB" class="skill-icon" />MongoDB</li>
-          <li><img src="assets/icons/flask.svg" alt="Flask/Django" class="skill-icon" />Flask</li>
-          <li><img src="assets/icons/django.svg" alt="Flask/Django" class="skill-icon" />Django</li>
-          <li><img src="assets/icons/react.svg" alt="React" class="skill-icon" />React</li>
-        </ul>
-      </div>
+
+    </div>
+
+    <!-- View More Skills Button -->
+    <div class="view-more-container">
+      <button class="view-more-btn" id="viewMoreSkills">
+        <span class="btn-text">View More Skills</span>
+        <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
     </div>
   </div>
 </section>
