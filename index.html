@@ -149,6 +149,7 @@
           <div class="project-links">
            <a href="${project.github}" target="_blank" class="github-link">
           <img src="assets/icons/github.svg" alt="GitHub" class="github-icon" />GitHub</a>
+          <a href="#" class="view-details" data-index="${index}">View More</a>
           </div>
         `;
 
@@ -216,6 +217,35 @@
     renderProjects("All");
     updateProjectsButton();
   });
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("view-details")) {
+    e.preventDefault();
+    const index = parseInt(e.target.dataset.index);
+    const project = projects[index];
+
+    const modal = document.getElementById("projectModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDescription = document.getElementById("modalDescription");
+    const modalImage = document.getElementById("modalImage");
+
+    modalTitle.textContent = project.title;
+    modalDescription.textContent = project.summary;
+
+    // OPTIONAL: Add project-specific image logic
+    const imageName = project.title.replace(/\s+/g, "_") + ".png";
+    modalImage.src = `assets/project_images/${imageName}`;
+    modalImage.alt = project.title;
+
+    modal.style.display = "flex";
+  }
+
+  if (
+    e.target.classList.contains("modal-overlay") ||
+    e.target.classList.contains("close-btn")
+  ) {
+    document.getElementById("projectModal").style.display = "none";
+  }
+});
 
   // Modern Skills Section Functionality
   document.addEventListener("DOMContentLoaded", function () {
@@ -326,6 +356,7 @@
     });
   });
 </script>
+
 
 <body>
   <div class="loader" id="loader">
@@ -927,68 +958,99 @@
     </div>
   </div>
 </section>
+<section id="certifications" class="certifications marquee-section">
+  <div class="container">
+    <h2 class="certifications-title">Certifications</h2>
+    <div class="marquee-track rtl-scroll">
 
-<section id="certifications" class="certifications">
-        <div class="certifications"
-          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 100px auto 0 auto;">
-          <h3 class="certifications-title"
-            style="grid-column: 1 / -1; text-align: center; font-size: 2rem; margin-bottom: 2rem;">Certifications</h3>
+      <!-- First Pass -->
+      <div class="cert-card">
+        <img src="assets/certs/nit.png" alt="NIT AI ML" />
+        <p class="cert-label"><span class="cert-title">Advanced AI & ML</span> – <span class="cert-org">NIT Warangal</span></p>
+      </div>
+      <div class="cert-card">
+        <img src="assets/certs/gcp.png" alt="Google Cloud Platform" />
+        <p class="cert-label"><span class="cert-title">Google Cloud Platform</span> – <span class="cert-org">Google</span></p>
+      </div>
+      <div class="cert-card">
+        <img src="assets/certs/nvidia.jpg" alt="NVIDIA DLI" />
+        <p class="cert-label"><span class="cert-title">Deep Learning</span> – <span class="cert-org">NVIDIA DLI</span></p>
+      </div>
+      <div class="cert-card">
+        <img src="assets/certs/michigan.png" alt="UMich Web Python" />
+        <p class="cert-label"><span class="cert-title">Python Web Data</span> – <span class="cert-org">University of Michigan</span></p>
+      </div>
+      <div class="cert-card">
+        <img src="assets/certs/michigan.png" alt="UMich Data Structures" />
+        <p class="cert-label"><span class="cert-title">Python Data Structures</span> – <span class="cert-org">University of Michigan</span></p>
+      </div>
+      <div class="cert-card">
+        <img src="assets/certs/michigan.png" alt="UMich Python Intro" />
+        <p class="cert-label"><span class="cert-title">Python Basics</span> – <span class="cert-org">University of Michigan</span></p>
+      </div>
+      <div class="cert-card">
+        <img src="assets/certs/standford.jpg" alt="Stanford ML" />
+        <p class="cert-label"><span class="cert-title">Machine Learning</span> – <span class="cert-org">Stanford University</span></p>
+      </div>
+      <div class="cert-card">
+        <img src="assets/certs/incorta.png" alt="Incorta" />
+        <p class="cert-label"><span class="cert-title">Incorta Certified</span> – <span class="cert-org">Incorta</span></p>
+      </div>
+      <div class="cert-card">
+        <img src="assets/certs/power_bi.png" alt="Power BI Microsoft" />
+        <p class="cert-label"><span class="cert-title">Power BI Data Analyst</span> – <span class="cert-org">Microsoft</span></p>
+      </div>
+      <div class="cert-card">
+        <img src="assets/certs/power_bi.png" alt="Power BI Expert" />
+        <p class="cert-label"><span class="cert-title">Power BI Expert Certification</span></p>
+      </div>
 
-          <div class="cert-item"
-            style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem 1.5rem; box-shadow: 0 4px 15px rgba(74,158,255,0.2);">
-            <span class="cert-badge" style="font-size: 1.8rem; margin-right: 1rem;">🎓</span>
-            <span class="cert-name">Advanced Artificial Intelligence and Machine Learning Application – NIT
-              Warangal</span>
-          </div>
-          <div class="cert-item"
-            style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem 1.5rem; box-shadow: 0 4px 15px rgba(74,158,255,0.2);">
-            <span class="cert-badge" style="font-size: 1.8rem; margin-right: 1rem;">☁️</span>
-            <span class="cert-name">Google Cloud Platform – Google</span>
-          </div>
-          <div class="cert-item"
-            style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem 1.5rem; box-shadow: 0 4px 15px rgba(74,158,255,0.2);">
-            <span class="cert-badge" style="font-size: 1.8rem; margin-right: 1rem;">💻</span>
-            <span class="cert-name">NVIDIA DLI Certificate – Fundamentals of Deep Learning – NVIDIA</span>
-          </div>
-          <div class="cert-item"
-            style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem 1.5rem; box-shadow: 0 4px 15px rgba(74,158,255,0.2);">
-            <span class="cert-badge" style="font-size: 1.8rem; margin-right: 1rem;">🐍</span>
-            <span class="cert-name">Using Python to Access Web Data – University of Michigan</span>
-          </div>
-          <div class="cert-item"
-            style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem 1.5rem; box-shadow: 0 4px 15px rgba(74,158,255,0.2);">
-            <span class="cert-badge" style="font-size: 1.8rem; margin-right: 1rem;">🐍</span>
-            <span class="cert-name">Python Data Structures – University of Michigan</span>
-          </div>
-          <div class="cert-item"
-            style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem 1.5rem; box-shadow: 0 4px 15px rgba(74,158,255,0.2);">
-            <span class="cert-badge" style="font-size: 1.8rem; margin-right: 1rem;">🐍</span>
-            <span class="cert-name">Programming for Everybody (Getting Started with Python) – University of
-              Michigan</span>
-          </div>
-          <div class="cert-item"
-            style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem 1.5rem; box-shadow: 0 4px 15px rgba(74,158,255,0.2);">
-            <span class="cert-badge" style="font-size: 1.8rem; margin-right: 1rem;">📊</span>
-            <span class="cert-name">Machine Learning – Stanford University</span>
-          </div>
-          <div class="cert-item"
-            style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem 1.5rem; box-shadow: 0 4px 15px rgba(74,158,255,0.2);">
-            <span class="cert-badge" style="font-size: 1.8rem; margin-right: 1rem;">📈</span>
-            <span class="cert-name">Incorta Certified – Incorta</span>
-          </div>
-          <div class="cert-item"
-            style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem 1.5rem; box-shadow: 0 4px 15px rgba(74,158,255,0.2);">
-            <span class="cert-badge" style="font-size: 1.8rem; margin-right: 1rem;">🗂️</span>
-            <span class="cert-name">Microsoft Certified Power BI Data Analyst Associate – Microsoft</span>
-          </div>
-          <div class="cert-item"
-            style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem 1.5rem; box-shadow: 0 4px 15px rgba(74,158,255,0.2);">
-            <span class="cert-badge" style="font-size: 1.8rem; margin-right: 1rem;">🔍</span>
-            <span class="cert-name">Power BI Expert Certification</span>
-          </div>
-        </div>
+      <!-- Second Pass -->
+      <div class="cert-card">
+        <img src="assets/certs/nit.png" alt="NIT AI ML" />
+        <p class="cert-label"><span class="cert-title">Advanced AI & ML</span> – <span class="cert-org">NIT Warangal</span></p>
+      </div>
+      <div class="cert-card">
+        <img src="assets/certs/gcp.png" alt="Google Cloud Platform" />
+        <p class="cert-label"><span class="cert-title">Google Cloud Platform</span> – <span class="cert-org">Google</span></p>
+      </div>
+      <div class="cert-card">
+        <img src="assets/certs/nvidia.jpg" alt="NVIDIA DLI" />
+        <p class="cert-label"><span class="cert-title">Deep Learning</span> – <span class="cert-org">NVIDIA DLI</span></p>
+      </div>
+      <div class="cert-card">
+        <img src="assets/certs/michigan.png" alt="UMich Web Python" />
+        <p class="cert-label"><span class="cert-title">Python Web Data</span> – <span class="cert-org">University of Michigan</span></p>
+      </div>
+      <div class="cert-card">
+        <img src="assets/certs/michigan.png" alt="UMich Data Structures" />
+        <p class="cert-label"><span class="cert-title">Python Data Structures</span> – <span class="cert-org">University of Michigan</span></p>
+      </div>
+      <div class="cert-card">
+        <img src="assets/certs/michigan.png" alt="UMich Python Intro" />
+        <p class="cert-label"><span class="cert-title">Python Basics</span> – <span class="cert-org">University of Michigan</span></p>
+      </div>
+      <div class="cert-card">
+        <img src="assets/certs/standford.jpg" alt="Stanford ML" />
+        <p class="cert-label"><span class="cert-title">Machine Learning</span> – <span class="cert-org">Stanford University</span></p>
+      </div>
+      <div class="cert-card">
+        <img src="assets/certs/incorta.png" alt="Incorta" />
+        <p class="cert-label"><span class="cert-title">Incorta Certified</span> – <span class="cert-org">Incorta</span></p>
+      </div>
+      <div class="cert-card">
+        <img src="assets/certs/power_bi.png" alt="Power BI Microsoft" />
+        <p class="cert-label"><span class="cert-title">Power BI Data Analyst</span> – <span class="cert-org">Microsoft</span></p>
+      </div>
+      <div class="cert-card">
+        <img src="assets/certs/power_bi.png" alt="Power BI Expert" />
+        <p class="cert-label"><span class="cert-title">Power BI Expert Certification</span></p>
+      </div>
 
-    </section>
+    </div>
+  </div>
+</section>
+
 
     <section id="contact" class="contact">
       <div class="container">
@@ -1181,6 +1243,15 @@
 
 
   </script>
+  <div id="projectModal" class="modal-overlay">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h2 id="modalTitle"></h2>
+    <img id="modalImage" src="" alt="Project image" />
+    <p id="modalDescription"></p>
+  </div>
+</div>
+
 </body>
 
 </html>
