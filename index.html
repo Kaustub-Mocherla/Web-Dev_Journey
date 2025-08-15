@@ -247,10 +247,10 @@ document.addEventListener("click", function (e) {
   }
 });
 
-  // Modern Skills Section Functionality
+  // Compact Skills Section Functionality
   document.addEventListener("DOMContentLoaded", function () {
     const skillNavBtns = document.querySelectorAll('.skill-nav-btn');
-    const skillCards = document.querySelectorAll('.skill-card');
+    const skillCategories = document.querySelectorAll('.skill-category');
 
     // Skill navigation functionality
     skillNavBtns.forEach(btn => {
@@ -262,19 +262,19 @@ document.addEventListener("click", function (e) {
 
         const category = btn.dataset.category;
 
-        // Filter skill cards
-        skillCards.forEach(card => {
-          if (category === 'all' || card.dataset.category === category) {
-            card.style.display = 'block';
-            card.style.animation = 'fadeInUp 0.6s ease forwards';
+        // Filter skill categories
+        skillCategories.forEach(skillCat => {
+          if (category === 'all' || skillCat.dataset.category === category) {
+            skillCat.style.display = 'block';
+            skillCat.style.animation = 'fadeInUp 0.4s ease forwards';
           } else {
-            card.style.display = 'none';
+            skillCat.style.display = 'none';
           }
         });
       });
     });
 
-    // Animate skill cards on scroll
+    // Animate skill categories on scroll
     const observeSkills = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -284,75 +284,22 @@ document.addEventListener("click", function (e) {
       });
     }, { threshold: 0.2 });
 
-    skillCards.forEach(card => {
-      observeSkills.observe(card);
+    skillCategories.forEach(category => {
+      observeSkills.observe(category);
     });
 
-    // Add modern hover effects for skill items
-    const skillItems = document.querySelectorAll('.skill-item');
-    skillItems.forEach(item => {
-      item.addEventListener('mouseenter', () => {
-        // Add subtle glow effect
-        item.style.boxShadow = '0 8px 25px rgba(74, 158, 255, 0.2)';
+    // Add hover effects for skill tags
+    const skillTags = document.querySelectorAll('.skill-tag');
+    skillTags.forEach(tag => {
+      tag.addEventListener('mouseenter', () => {
+        tag.style.transform = 'translateY(-2px)';
+        tag.style.boxShadow = '0 8px 25px rgba(74, 158, 255, 0.15)';
       });
 
-      item.addEventListener('mouseleave', () => {
-        // Remove glow effect
-        item.style.boxShadow = '';
+      tag.addEventListener('mouseleave', () => {
+        tag.style.transform = 'translateY(0)';
+        tag.style.boxShadow = '';
       });
-    });
-
-    // View More Skills functionality
-    const viewMoreBtn = document.getElementById('viewMoreSkills');
-    const expandableSkills = document.querySelectorAll('.expandable-skill');
-    const featuredSkills = document.querySelectorAll('.featured-skill');
-    let isExpanded = false;
-
-    viewMoreBtn.addEventListener('click', () => {
-      isExpanded = !isExpanded;
-      
-      if (isExpanded) {
-        // Show expandable skills with staggered animation
-        expandableSkills.forEach((skill, index) => {
-          setTimeout(() => {
-            skill.classList.add('show');
-          }, index * 100);
-        });
-        
-        // Show expandable skill items in featured cards
-        featuredSkills.forEach(skill => {
-          skill.classList.add('expanded');
-        });
-        
-        // Update button text and state
-        viewMoreBtn.querySelector('.btn-text').textContent = 'View Less Skills';
-        viewMoreBtn.classList.add('expanded');
-      } else {
-        // Hide expandable skill items in featured cards first
-        featuredSkills.forEach(skill => {
-          skill.classList.remove('expanded');
-        });
-        
-        // Hide expandable skills with reverse staggered animation
-        const reversedSkills = [...expandableSkills].reverse();
-        reversedSkills.forEach((skill, index) => {
-          setTimeout(() => {
-            skill.classList.remove('show');
-          }, index * 100);
-        });
-        
-        // Update button text and state
-        viewMoreBtn.querySelector('.btn-text').textContent = 'View More Skills';
-        viewMoreBtn.classList.remove('expanded');
-        
-        // Scroll back to skills section smoothly after animation completes
-        setTimeout(() => {
-          document.getElementById('technical-expertise').scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'start' 
-          });
-        }, 300);
-      }
     });
   });
 </script>
@@ -701,262 +648,250 @@ document.addEventListener("click", function (e) {
 
       </div>
     </section>
-<section id="technical-expertise" class="skills">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Technical Expertise</h2>
-      <p class="section-subtitle">Core capabilities across data engineering, cloud, analytics & AI</p>
-    </div>
-
-    <!-- Skill Category Navigation -->
-    <div class="skill-nav">
-      <button class="skill-nav-btn active" data-category="all">All Skills</button>
-      <button class="skill-nav-btn" data-category="languages">Languages</button>
-      <button class="skill-nav-btn" data-category="tools">Data Tools</button>
-      <button class="skill-nav-btn" data-category="cloud">Cloud</button>
-      <button class="skill-nav-btn" data-category="ai">AI/ML</button>
-      <button class="skill-nav-btn" data-category="viz">Analytics</button>
-    </div>
-
-    <!-- Modern Skills Grid -->
-    <div class="modern-skills-grid">
+<section id="technical-expertise" class="what-i-do-section">
+  <div class="skills-label">Skills</div>
+  <div class="content-wrapper">
+    <h2 class="what-i-do-title">What I do</h2>
+    <p class="what-i-do-description">I specialize in building end-to-end data solutions, from ETL pipelines to advanced AI systems, leveraging modern cloud technologies and machine learning frameworks.</p>
+    
+    <!-- Skills Carousel -->
+    <div class="skills-carousel">
+      <div class="carousel-header">
+        <h3 id="category-title" class="carousel-category-title">Programming Languages</h3>
+        <div class="carousel-indicators">
+          <div class="indicator active"></div>
+          <div class="indicator"></div>
+          <div class="indicator"></div>
+          <div class="indicator"></div>
+          <div class="indicator"></div>
+        </div>
+      </div>
       
-      <!-- Programming Languages -->
-      <div class="skill-card featured-skill" data-category="languages">
-        <div class="skill-card-header">
-          <div class="skill-category-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
-              <path d="M6 8h.01M6 12h.01M10 8h4M10 12h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+      <div class="skills-container">
+        <!-- Skill Set 1: Programming Languages -->
+        <div class="skill-set active">
+          <div class="skills-grid-5col">
+            <div class="skill-item">
+              <img src="assets/icons/python.svg" alt="Python" class="skill-icon">
+              <p class="skill-name">Python</p>
+            </div>
+            <div class="skill-item">
+              <img src="assets/icons/mysql.svg" alt="SQL" class="skill-icon">
+              <p class="skill-name">SQL</p>
+            </div>
+            <div class="skill-item">
+              <img src="assets/icons/R_logo.svg.png" alt="R" class="skill-icon">
+              <p class="skill-name">R</p>
+            </div>
+            <div class="skill-item">
+              <img src="assets/icons/react.svg" alt="JavaScript" class="skill-icon">
+              <p class="skill-name">JavaScript</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">C++</div>
+              <p class="skill-name">C++</p>
+            </div>
           </div>
-          <h3>Programming Languages</h3>
-          <div class="skill-count">4 Technologies</div>
         </div>
-        <div class="skill-items">
-          <div class="skill-item">
-            <img src="assets/icons/python.svg" alt="Python" class="modern-skill-icon" />
-            <div class="skill-info">
-              <span class="skill-name">Python</span>
-              <span class="skill-description">Data analysis, ML pipelines, backend development</span>
+
+        <!-- Skill Set 2: Data Engineering Tools -->
+        <div class="skill-set">
+          <div class="skills-grid-5col">
+            <div class="skill-item">
+              <img src="assets/icons/spark.svg" alt="Apache Spark" class="skill-icon">
+              <p class="skill-name">Apache Spark</p>
+            </div>
+            <div class="skill-item">
+              <img src="assets/icons/pyspark.png" alt="PySpark" class="skill-icon">
+              <p class="skill-name">PySpark</p>
+            </div>
+            <div class="skill-item">
+              <img src="assets/icons/airflow.png" alt="Apache Airflow" class="skill-icon">
+              <p class="skill-name">Apache Airflow</p>
+            </div>
+            <div class="skill-item">
+              <img src="assets/icons/kafka.svg" alt="Apache Kafka" class="skill-icon">
+              <p class="skill-name">Apache Kafka</p>
+            </div>
+            <div class="skill-item">
+              <img src="assets/icons/iics.png" alt="Informatica" class="skill-icon">
+              <p class="skill-name">Informatica</p>
+            </div>
+            <div class="skill-item">
+              <img src="assets/icons/databricks.svg" alt="Databricks" class="skill-icon">
+              <p class="skill-name">Databricks</p>
+            </div>
+            <div class="skill-item">
+              <img src="assets/icons/mongodb.svg" alt="MongoDB" class="skill-icon">
+              <p class="skill-name">MongoDB</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">DBT</div>
+              <p class="skill-name">DBT</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">Hadoop</div>
+              <p class="skill-name">Hadoop</p>
+            </div>
+            <div class="skill-item">
+              <img src="assets/icons/github.svg" alt="Git" class="skill-icon">
+              <p class="skill-name">Git</p>
             </div>
           </div>
-          <div class="skill-item">
-            <img src="assets/icons/mysql.svg" alt="SQL" class="modern-skill-icon" />
-            <div class="skill-info">
-              <span class="skill-name">SQL</span>
-              <span class="skill-description">Complex queries, data warehousing, optimization</span>
+        </div>
+
+        <!-- Skill Set 3: Cloud Platforms -->
+        <div class="skill-set">
+          <div class="skills-grid-5col">
+            <div class="skill-item">
+              <img src="assets/icons/aws.svg" alt="AWS" class="skill-icon">
+              <p class="skill-name">AWS</p>
+            </div>
+            <div class="skill-item">
+              <img src="assets/icons/azure.svg" alt="Azure" class="skill-icon">
+              <p class="skill-name">Azure</p>
+            </div>
+            <div class="skill-item">
+              <img src="assets/icons/gcp.svg" alt="Google Cloud" class="skill-icon">
+              <p class="skill-name">Google Cloud</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">S3</div>
+              <p class="skill-name">Amazon S3</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">Lambda</div>
+              <p class="skill-name">AWS Lambda</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">EC2</div>
+              <p class="skill-name">Amazon EC2</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">BigQuery</div>
+              <p class="skill-name">BigQuery</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">Snowflake</div>
+              <p class="skill-name">Snowflake</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">Docker</div>
+              <p class="skill-name">Docker</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">K8s</div>
+              <p class="skill-name">Kubernetes</p>
             </div>
           </div>
-          <div class="skill-item expandable-skill">
-            <img src="assets/icons/pyspark.png" alt="PySpark" class="modern-skill-icon" />
-            <div class="skill-info">
-              <span class="skill-name">PySpark</span>
-              <span class="skill-description">Distributed computing, big data processing</span>
+        </div>
+
+        <!-- Skill Set 4: AI/ML Frameworks -->
+        <div class="skill-set">
+          <div class="skills-grid-5col">
+            <div class="skill-item">
+              <img src="assets/icons/tensorflow.svg" alt="TensorFlow" class="skill-icon">
+              <p class="skill-name">TensorFlow</p>
+            </div>
+            <div class="skill-item">
+              <img src="assets/icons/pytorch.svg" alt="PyTorch" class="skill-icon">
+              <p class="skill-name">PyTorch</p>
+            </div>
+            <div class="skill-item">
+              <img src="assets/icons/ai-svgrepo-com.svg" alt="LLMs" class="skill-icon">
+              <p class="skill-name">LLMs</p>
+            </div>
+            <div class="skill-item">
+              <img src="assets/icons/opencv.svg" alt="OpenCV" class="skill-icon">
+              <p class="skill-name">OpenCV</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">Scikit</div>
+              <p class="skill-name">Scikit-learn</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">Pandas</div>
+              <p class="skill-name">Pandas</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">NumPy</div>
+              <p class="skill-name">NumPy</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">Keras</div>
+              <p class="skill-name">Keras</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">Hugging Face</div>
+              <p class="skill-name">Hugging Face</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">LangChain</div>
+              <p class="skill-name">LangChain</p>
             </div>
           </div>
-          <div class="skill-item expandable-skill">
-            <img src="assets/icons/R_logo.svg.png" alt="R" class="modern-skill-icon" />
-            <div class="skill-info">
-              <span class="skill-name">R</span>
-              <span class="skill-description">Statistical analysis, data visualization</span>
+        </div>
+
+        <!-- Skill Set 5: BI & Analytics -->
+        <div class="skill-set">
+          <div class="skills-grid-5col">
+            <div class="skill-item">
+              <img src="assets/icons/Power-BI-Logo.png" alt="Power BI" class="skill-icon">
+              <p class="skill-name">Power BI</p>
+            </div>
+            <div class="skill-item">
+              <img src="assets/icons/tableau.svg" alt="Tableau" class="skill-icon">
+              <p class="skill-name">Tableau</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">Excel</div>
+              <p class="skill-name">Advanced Excel</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">Looker</div>
+              <p class="skill-name">Looker</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">QlikView</div>
+              <p class="skill-name">QlikView</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">SSRS</div>
+              <p class="skill-name">SSRS</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">Matplotlib</div>
+              <p class="skill-name">Matplotlib</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">Seaborn</div>
+              <p class="skill-name">Seaborn</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">Plotly</div>
+              <p class="skill-name">Plotly</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-text">D3.js</div>
+              <p class="skill-name">D3.js</p>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- Data Engineering Tools -->
-      <div class="skill-card featured-skill" data-category="tools">
-        <div class="skill-card-header">
-          <div class="skill-category-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2L2 7v10l10 5 10-5V7l-10-5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M2 7l10 5 10-5M12 22V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h3>Data Engineering Tools</h3>
-          <div class="skill-count">4 Technologies</div>
-        </div>
-        <div class="skill-items">
-          <div class="skill-item">
-            <img src="assets/icons/iics.png" alt="Informatica" class="modern-skill-icon" />
-            <div class="skill-info">
-              <span class="skill-name">Informatica IICS</span>
-              <span class="skill-description">ETL pipelines, data integration, cloud migration</span>
-            </div>
-          </div>
-          <div class="skill-item">
-            <img src="assets/icons/airflow.png" alt="Airflow" class="modern-skill-icon" />
-            <div class="skill-info">
-              <span class="skill-name">Apache Airflow</span>
-              <span class="skill-description">Workflow orchestration, task scheduling</span>
-            </div>
-          </div>
-          <div class="skill-item expandable-skill">
-            <img src="assets/icons/databricks.svg" alt="Databricks" class="modern-skill-icon" />
-            <div class="skill-info">
-              <span class="skill-name">Databricks</span>
-              <span class="skill-description">Unified analytics, collaborative notebooks</span>
-            </div>
-          </div>
-          <div class="skill-item expandable-skill">
-            <img src="assets/icons/kafka.svg" alt="Kafka" class="modern-skill-icon" />
-            <div class="skill-info">
-              <span class="skill-name">Apache Kafka</span>
-              <span class="skill-description">Real-time streaming, event-driven architecture</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Cloud Platforms - Now expandable -->
-      <div class="skill-card expandable-skill" data-category="cloud">
-        <div class="skill-card-header">
-          <div class="skill-category-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h3>Cloud Platforms</h3>
-          <div class="skill-count">3 Technologies</div>
-        </div>
-        <div class="skill-items">
-          <div class="skill-item">
-            <img src="assets/icons/azure.svg" alt="Azure" class="modern-skill-icon" style="background-color: #f0f0f0;" />
-            <div class="skill-info">
-              <span class="skill-name">Microsoft Azure</span>
-              <span class="skill-description">Data Lake, AI services, enterprise solutions</span>
-            </div>
-          </div>
-          <div class="skill-item">
-            <img src="assets/icons/aws.svg" alt="AWS" class="modern-skill-icon" />
-            <div class="skill-info">
-              <span class="skill-name">Amazon AWS</span>
-              <span class="skill-description">EMR, S3, Lambda, scalable infrastructure</span>
-            </div>
-          </div>
-          <div class="skill-item">
-            <img src="assets/icons/gcp.svg" alt="Google Cloud" class="modern-skill-icon" />
-            <div class="skill-info">
-              <span class="skill-name">Google Cloud Platform</span>
-              <span class="skill-description">BigQuery, ML Engine, data analytics</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- AI/ML Section - Now featured -->
-      <div class="skill-card featured-skill" data-category="ai">
-        <div class="skill-card-header">
-          <div class="skill-category-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
-              <path d="M12 1v6m0 6v6" stroke="currentColor" stroke-width="2"/>
-              <path d="M21 12h-6m-6 0H3" stroke="currentColor" stroke-width="2"/>
-              <path d="M18.364 5.636l-4.243 4.243m-4.243 4.243l-4.243 4.243" stroke="currentColor" stroke-width="2"/>
-              <path d="M18.364 18.364l-4.243-4.243m-4.243-4.243l-4.243-4.243" stroke="currentColor" stroke-width="2"/>
-            </svg>
-          </div>
-          <h3>AI/ML & Analytics</h3>
-          <div class="skill-count">4 Technologies</div>
-        </div>
-        <div class="skill-items">
-          <div class="skill-item">
-            <img src="assets/icons/tensorflow.svg" alt="TensorFlow" class="modern-skill-icon" />
-            <div class="skill-info">
-              <span class="skill-name">TensorFlow</span>
-              <span class="skill-description">Deep learning, neural networks, model training</span>
-            </div>
-          </div>
-          <div class="skill-item">
-            <img src="assets/icons/pytorch.svg" alt="PyTorch" class="modern-skill-icon" />
-            <div class="skill-info">
-              <span class="skill-name">PyTorch</span>
-              <span class="skill-description">Research, prototyping, dynamic computation</span>
-            </div>
-          </div>
-          <div class="skill-item expandable-skill">
-            <img src="assets/icons/ai-svgrepo-com.svg" alt="NLP & LLMs" class="modern-skill-icon" />
-            <div class="skill-info">
-              <span class="skill-name">NLP & LLMs</span>
-              <span class="skill-description">Language models, text processing, RAG systems</span>
-            </div>
-          </div>
-          <div class="skill-item expandable-skill">
-            <img src="assets/icons/opencv.svg" alt="OpenCV" class="modern-skill-icon" />
-            <div class="skill-info">
-              <span class="skill-name">OpenCV</span>
-              <span class="skill-description">Computer vision, image processing, detection</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Analytics & Visualization - Now featured -->
-      <div class="skill-card featured-skill" data-category="viz">
-        <div class="skill-card-header">
-          <div class="skill-category-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3 3v18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M7 16l4-4 4 4 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M17 8v3h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h3>Analytics & Visualization</h3>
-          <div class="skill-count">5 Technologies</div>
-        </div>
-        <div class="skill-items">
-          <div class="skill-item">
-            <img src="assets/icons/Power-BI-Logo.png" alt="Power BI" class="modern-skill-icon" style="background-color: #f0f0f0;" />
-            <div class="skill-info">
-              <span class="skill-name">Power BI</span>
-              <span class="skill-description">Interactive dashboards, business intelligence</span>
-            </div>
-          </div>
-          <div class="skill-item">
-            <img src="assets/icons/tableau.svg" alt="Tableau" class="modern-skill-icon" />
-            <div class="skill-info">
-              <span class="skill-name">Tableau</span>
-              <span class="skill-description">Data visualization, storytelling with data</span>
-            </div>
-          </div>
-          <div class="skill-item expandable-skill">
-            <img src="assets/icons/mysql.svg" alt="MySQL" class="modern-skill-icon" />
-            <div class="skill-info">
-              <span class="skill-name">MySQL</span>
-              <span class="skill-description">Relational databases, query optimization</span>
-            </div>
-          </div>
-          <div class="skill-item expandable-skill">
-            <img src="assets/icons/mongodb.svg" alt="MongoDB" class="modern-skill-icon" />
-            <div class="skill-info">
-              <span class="skill-name">MongoDB</span>
-              <span class="skill-description">NoSQL databases, document storage</span>
-            </div>
-          </div>
-          <div class="skill-item expandable-skill">
-            <img src="assets/icons/react.svg" alt="React" class="modern-skill-icon" />
-            <div class="skill-info">
-              <span class="skill-name">React</span>
-              <span class="skill-description">Frontend development, interactive UIs</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- View More Skills Button -->
-    <div class="view-more-container">
-      <button class="view-more-btn" id="viewMoreSkills">
-        <span class="btn-text">View More Skills</span>
-        <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
     </div>
   </div>
+  <div class="scroll-indicator"></div>
+</section>
+            <div class="skill-level">
+              <div class="skill-progress"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
 </section>
 <section id="certifications" class="certifications marquee-section">
   <div class="container">
@@ -1239,6 +1174,43 @@ document.addEventListener("click", function (e) {
 
     window.addEventListener("DOMContentLoaded", initTimelineScrollAnimation);
 
+    // Skills filtering functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const skillNavBtns = document.querySelectorAll('.skill-nav-btn');
+      const skillGroups = document.querySelectorAll('.skill-group');
+
+      function filterSkills(category) {
+        skillGroups.forEach(group => {
+          const groupCategories = group.getAttribute('data-category') || '';
+          
+          if (category === 'all' || groupCategories.includes(category)) {
+            group.style.display = 'block';
+            group.style.opacity = '1';
+            group.style.transform = 'translateY(0)';
+          } else {
+            group.style.display = 'none';
+          }
+        });
+      }
+
+      skillNavBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Remove active class from all buttons
+          skillNavBtns.forEach(b => b.classList.remove('active'));
+          
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          // Get category and filter
+          const category = this.getAttribute('data-category');
+          filterSkills(category);
+        });
+      });
+
+      // Initialize with all skills visible
+      filterSkills('all');
+    });
+
 
 
 
@@ -1252,6 +1224,7 @@ document.addEventListener("click", function (e) {
   </div>
 </div>
 
+<script src="skills-carousel.js"></script>
 </body>
 
 </html>
