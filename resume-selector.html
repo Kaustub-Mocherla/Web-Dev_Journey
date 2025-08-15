@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Selector - Vaishnavi Mocherla</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .resume-selector-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resume-selector-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23333" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .selector-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: rgba(74, 158, 255, 0.1);
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            z-index: 3;
+        }
+
+        .back-button:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(74, 158, 255, 0.3);
+        }
+
+        .selector-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .selector-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .resume-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .resume-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resume-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), #00d4ff);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .resume-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .resume-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 40px rgba(74, 158, 255, 0.2);
+        }
+
+        .resume-card-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .resume-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), #00d4ff);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .resume-card:hover .resume-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .resume-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-description {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .resume-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: rgba(74, 158, 255, 0.2);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(74, 158, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .selector-title {
+                font-size: 2rem;
+            }
+            
+            .resume-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .back-button {
+                top: 20px;
+                left: 20px;
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-selector-container">
+        <a href="index.html" class="back-button">← Back to Portfolio</a>
+        
+        <div class="selector-content">
+            <h1 class="selector-title">Who are you looking for?</h1>
+            <p class="selector-subtitle">Choose the role that best matches your needs and explore my tailored resume</p>
+            
+            <div class="resume-grid">
+                <div class="resume-card" onclick="openResume('data-analyst')">
+                    <div class="resume-card-content">
+                        <div class="resume-icon">📊</div>
+                        <h3 class="resume-title">Data Analyst</h3>
+                        <p class="resume-description">Specialized in data visualization, statistical analysis, and business intelligence</p>
+                        <div class="resume-skills">
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Power BI</span>
+                            <span class="skill-tag">Tableau</span>
+                            <span class="skill-tag">Excel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resume-card" onclick="openResume('business-analyst')">
+                    <div class="resume-card-content">
+                        <div class="resume-icon">💼</div>
+                        <h3 class="resume-title">Business Analyst</h3>
+                        <p class="resume-description">Focused on process optimization, requirements analysis, and strategic insights</p>
+                        <div class="resume-skills">
+                            <span class="skill-tag">Requirements</span>
+                            <span class="skill-tag">Process Mapping</span>
+                            <span class="skill-tag">Stakeholder Management</span>
+                            <span class="skill-tag">Documentation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resume-card" onclick="openResume('data-engineer')">
+                    <div class="resume-card-content">
+                        <div class="resume-icon">⚙️</div>
+                        <h3 class="resume-title">Data Engineer</h3>
+                        <p class="resume-description">Expert in data pipelines, ETL processes, and cloud data architectures</p>
+                        <div class="resume-skills">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Spark</span>
+                            <span class="skill-tag">Airflow</span>
+                            <span class="skill-tag">AWS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resume-card" onclick="openResume('data-scientist')">
+                    <div class="resume-card-content">
+                        <div class="resume-icon">🔬</div>
+                        <h3 class="resume-title">Data Scientist</h3>
+                        <p class="resume-description">Advanced analytics, machine learning, and predictive modeling expertise</p>
+                        <div class="resume-skills">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">R</span>
+                            <span class="skill-tag">ML</span>
+                            <span class="skill-tag">Statistics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resume-card" onclick="openResume('ml-engineer')">
+                    <div class="resume-card-content">
+                        <div class="resume-icon">🤖</div>
+                        <h3 class="resume-title">ML Engineer</h3>
+                        <p class="resume-description">Machine learning operations, model deployment, and AI system architecture</p>
+                        <div class="resume-skills">
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">MLOps</span>
+                            <span class="skill-tag">Docker</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openResume(role) {
+            // Add a subtle animation before opening
+            const card = event.currentTarget;
+            card.style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                // Map roles to resume file names
+                const resumeFiles = {
+                    'data-analyst': 'Vaishnavi_Resume_DataAnalyst.pdf',
+                    'business-analyst': 'Vaishnavi_Resume_BusinessAnalyst.pdf', 
+                    'data-engineer': 'Vaishnavi_Resume_DataEngineer.pdf',
+                    'data-scientist': 'Vaishnavi_Resume_DataScientist.pdf',
+                    'ml-engineer': 'Vaishnavi_Resume_MLEngineer.pdf'
+                };
+                
+                const resumeFile = resumeFiles[role] || 'Vaishnavi_Resume.pdf';
+                
+                // Open the specific resume
+                window.open(resumeFile, '_blank');
+                
+                // Reset card animation
+                card.style.transform = '';
+            }, 150);
+        }
+
+        // Add smooth entrance animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.resume-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

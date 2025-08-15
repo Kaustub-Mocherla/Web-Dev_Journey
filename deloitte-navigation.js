@@ -1,35 +1,70 @@
-// Deloitte-Style Navigation Functionality
+// Deloitte-Style Right Side Navigation Panel
 class DeloitteNavigation {
   constructor() {
-    this.header = document.querySelector('.header');
-    this.navToggle = document.getElementById('navToggle');
-    this.navMenu = document.getElementById('navMenu');
-    this.navLinks = document.querySelectorAll('.nav-link');
     this.sections = document.querySelectorAll('section[id]');
+    this.activeSection = '';
     
     this.init();
   }
   
   init() {
+    this.createNavigationPanel();
     this.bindEvents();
     this.handleScroll();
     this.updateActiveSection();
   }
   
+  createNavigationPanel() {
+    // Create the navigation panel HTML
+    const navPanel = document.createElement('div');
+    navPanel.className = 'deloitte-nav-panel';
+    navPanel.innerHTML = `
+      <div class="nav-panel-header">
+        <span class="nav-panel-title">Jump to:</span>
+      </div>
+      <ul class="nav-panel-list">
+        <li class="nav-panel-item">
+          <a href="#about" class="nav-panel-link" data-section="about">
+            <span class="nav-panel-dot"></span>
+            <span class="nav-panel-text">About</span>
+          </a>
+        </li>
+        <li class="nav-panel-item">
+          <a href="#experience" class="nav-panel-link" data-section="experience">
+            <span class="nav-panel-dot"></span>
+            <span class="nav-panel-text">Experience</span>
+          </a>
+        </li>
+        <li class="nav-panel-item">
+          <a href="#projects" class="nav-panel-link" data-section="projects">
+            <span class="nav-panel-dot"></span>
+            <span class="nav-panel-text">Projects</span>
+          </a>
+        </li>
+        <li class="nav-panel-item">
+          <a href="#technical-expertise" class="nav-panel-link" data-section="technical-expertise">
+            <span class="nav-panel-dot"></span>
+            <span class="nav-panel-text">Skills</span>
+          </a>
+        </li>
+        <li class="nav-panel-item">
+          <a href="#contact" class="nav-panel-link" data-section="contact">
+            <span class="nav-panel-dot"></span>
+            <span class="nav-panel-text">Contact</span>
+          </a>
+        </li>
+      </ul>
+    `;
+    
+    // Add the panel to the body
+    document.body.appendChild(navPanel);
+  }
+  
   bindEvents() {
-    // Mobile menu toggle
-    this.navToggle.addEventListener('click', () => this.toggleMobileMenu());
-    
-    // Close mobile menu when clicking nav links
-    this.navLinks.forEach(link => {
-      link.addEventListener('click', () => this.closeMobileMenu());
-    });
-    
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!this.navMenu.contains(e.target) && !this.navToggle.contains(e.target)) {
-        this.closeMobileMenu();
-      }
+    // Smooth scrolling for navigation links
+    const navLinks = document.querySelectorAll('.nav-panel-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => this.smoothScroll(e));
     });
     
     // Scroll events
@@ -37,17 +72,38 @@ class DeloitteNavigation {
       this.handleScroll();
       this.updateActiveSection();
     }, { passive: true });
+  }
+  
+  handleScroll() {
+    // Add any scroll-based effects here if needed
+  }
+  
+  updateActiveSection() {
+    let current = '';
+    const scrollPosition = window.scrollY + 100;
     
-    // Smooth scrolling for navigation links
-    this.navLinks.forEach(link => {
-      link.addEventListener('click', (e) => this.smoothScroll(e));
+    this.sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        current = section.getAttribute('id');
+      }
     });
     
-    // Resize event
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 768) {
-        this.closeMobileMenu();
-      }
+    if (current !== this.activeSection) {
+      this.activeSection = current;
+      this.updateNavigationDots();
+    }
+  }
+  
+  updateNavigationDots() {
+    const navLinks = document.querySelectorAll('.nav-panel-link');
+    navLinks.forEach(link => {
+      const section = link.getAttribute('data-section');
+      link.classList.toggle('active', section === this.activeSection);
+    });
+  }
     });
   }
   
@@ -242,4 +298,9 @@ document.addEventListener('DOMContentLoaded', () => {
       ctaButton.style.transform = 'translateX(0)';
     }, 800);
   }
+});
+
+// Initialize the navigation when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  new DeloitteNavigation();
 });
