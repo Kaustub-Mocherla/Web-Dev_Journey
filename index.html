@@ -7,6 +7,8 @@
   <title>Vaishnavi Mocherla | Data Engineer & Analyst</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- EmailJS Script -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -23,7 +25,7 @@
       {
         title: "End-to-End Weather Data Pipeline",
         tags: ["GCP", "Apache Airflow", "ARIMA", "Tableau"],
-        category: "ETL",
+        category: "DE",
         featured: true,
         summary:
           "Built an end-to-end weather forecasting pipeline on GCP using Airflow and ARIMA models. Automated ingestion, preprocessing, forecasting, and reporting. Visualized in Tableau.",
@@ -41,7 +43,7 @@
       {
         title: "US Accidents Analysis",
         tags: ["Apache Spark", "Machine Learning", "Data Visualization"],
-        category: "ETL",
+        category: "DE",
         featured: true,
         summary:
           "Analyzed 2.9M+ US car accident records using Apache Spark. Built and optimized Logistic Regression, Decision Trees, Random Forests. Applied grid search and cross-validation. Deployed on Databricks with dashboards included.",
@@ -51,7 +53,7 @@
       {
         title: "Construction Permit Analysis",
         tags: ["Power BI", "Tableau"],
-        category: "BI",
+        category: "DA",
         featured: true,
         summary:
           "Analyzed Seattle construction permit data to understand regional development. Created Power BI dashboards with interactive filters, drill-downs, and slicers. Included Tableau dashboards for city-level filtering and analytics.",
@@ -60,7 +62,7 @@
       {
         title: "Pricing Optimization for Guacamole at Chipotle",
         tags: ["Web Scraping", "Regression", "Tableau"],
-        category: "ETL",
+        category: "ML",
         featured: true,
         summary:
           "Analyzed pricing data for 3,000+ Chipotle units with USDA reports. Built Tableau dashboards. Used Ridge Regression and Random Forest to predict guacamole ingredient prices with 20% higher accuracy and improved model robustness by 30%.",
@@ -69,7 +71,7 @@
       {
         title: "Carbon Score Prediction",
         tags: ["Time Series", "Prophet", "PySpark"],
-        category: "ETL",
+        category: "ML",
         featured: false,
         summary:
           "Predicted carbon emission scores using PySpark and Facebook Prophet. Applied log transformation and cross-validation. Used ensemble models to reduce error by 20%. Forecasts visualized via Power BI.",
@@ -78,7 +80,7 @@
       {
         title: "Drug Recommendation System",
         tags: ["Sentiment Analysis", "Machine Learning", "NLP"],
-        category: "LLMs",
+        category: "ML",
         featured: false,
         summary:
           "Built a sentiment-driven recommendation engine for drug reviews. Used VADER for sentiment labeling and trained Random Forest and Naive Bayes models. Achieved 85% accuracy for sentiment classification.",
@@ -87,7 +89,7 @@
       {
         title: "Resume Classification Model",
         tags: ["NLP", "LLMs", "Deep Learning"],
-        category: "LLMs",
+        category: "ML",
         featured: false,
         summary:
           "Created a resume-job classification model using spaCy and deep learning. Used sentence embeddings for similarity scoring and built classifier for role tagging. Increased precision by 60%.",
@@ -96,7 +98,7 @@
       {
         title: "Application for the Blind",
         tags: ["NLP", "OpenCV", "Computer Vision"],
-        category: "LLMs",
+        category: "ML",
         featured: false,
         summary:
           "Designed a computer vision-based app for visually impaired users. Converted visual cues to voice using OCR, NLP, and gTTS. Used OpenCV for real-time object detection and NLP for contextual output.",
@@ -106,7 +108,7 @@
       {
         title: "LinkedIn Data Analysis",
         tags: ["MySQL", "MongoDB", "AWS", "GCP"],
-        category: "ETL",
+        category: "DA",
         featured: false,
         summary:
           "Extracted, transformed, and migrated job data from MySQL to MongoDB. Hosted on AWS and visualized with GCP Data Studio. Analyzed hiring patterns by region and tech stack.",
@@ -116,7 +118,7 @@
       {
   title: "Portfolio Website",
   tags: ["HTML", "CSS", "JavaScript", "Responsive Design", "Vanilla JS"],
-  category: "UI",
+  category: "DE",
   featured: false,
   summary: "Designed and developed a fully responsive portfolio website from scratch to showcase data engineering projects, professional experience, and academic work. Implemented dynamic project filtering, timeline animations, and reusable components without using React or external libraries.",
   github: "#"
@@ -630,8 +632,9 @@ document.addEventListener("click", function (e) {
         <div class="project-filters">
           <button class="filter-btn active" data-category="All">All</button>
           <button class="filter-btn" data-category="LLMs">LLMs</button>
-          <button class="filter-btn" data-category="ETL">ETL</button>
-          <button class="filter-btn" data-category="BI">BI</button>
+          <button class="filter-btn" data-category="ML">ML</button>
+          <button class="filter-btn" data-category="DA">DA</button>
+          <button class="filter-btn" data-category="DE">DE</button>
         </div>
 
         <div class="project-grid" id="projectGrid"></div>
@@ -888,7 +891,7 @@ document.addEventListener("click", function (e) {
           </div>
         </div>
       </div>
-
+      
     </div>
 
 
@@ -900,16 +903,24 @@ document.addEventListener("click", function (e) {
 
       <!-- First Set -->
       <div class="cert-card">
-        <img src="assets/certs/nit.png" alt="NIT AI ML" />
-        <p class="cert-label"><span class="cert-title">Advanced AI & ML</span></p>
+        <img src="assets/certs/power_bi.png" alt="Power BI Expert" />
+        <p class="cert-label"><span class="cert-title">Power BI Expert</span></p>
       </div>
       <div class="cert-card">
-        <img src="assets/certs/gcp.png" alt="Google Cloud Platform" />
-        <p class="cert-label"><span class="cert-title">Google Cloud Platform</span></p>
+        <img src="assets/certs/power_bi.png" alt="Power BI Microsoft" />
+        <p class="cert-label"><span class="cert-title">Power BI Data Analyst</span></p>
       </div>
       <div class="cert-card">
         <img src="assets/certs/nvidia.jpg" alt="NVIDIA DLI" />
         <p class="cert-label"><span class="cert-title">Deep Learning</span></p>
+      </div>
+      <div class="cert-card">
+        <img src="assets/certs/standford.jpg" alt="Stanford ML" />
+        <p class="cert-label"><span class="cert-title">Machine Learning</span></p>
+      </div>
+      <div class="cert-card">
+        <img src="assets/certs/gcp.png" alt="Google Cloud Platform" />
+        <p class="cert-label"><span class="cert-title">Google Cloud Platform</span></p>
       </div>
       <div class="cert-card">
         <img src="assets/certs/michigan.png" alt="UMich Web Python" />
@@ -924,34 +935,34 @@ document.addEventListener("click", function (e) {
         <p class="cert-label"><span class="cert-title">Python Basics</span></p>
       </div>
       <div class="cert-card">
-        <img src="assets/certs/standford.jpg" alt="Stanford ML" />
-        <p class="cert-label"><span class="cert-title">Machine Learning</span></p>
-      </div>
-      <div class="cert-card">
         <img src="assets/certs/incorta.png" alt="Incorta" />
         <p class="cert-label"><span class="cert-title">Incorta Certified</span></p>
       </div>
       <div class="cert-card">
-        <img src="assets/certs/power_bi.png" alt="Power BI Microsoft" />
-        <p class="cert-label"><span class="cert-title">Power BI Data Analyst</span></p>
-      </div>
-      <div class="cert-card">
-        <img src="assets/certs/power_bi.png" alt="Power BI Expert" />
-        <p class="cert-label"><span class="cert-title">Power BI Expert</span></p>
+        <img src="assets/certs/nit.png" alt="NIT AI ML" />
+        <p class="cert-label"><span class="cert-title">Advanced AI & ML</span></p>
       </div>
 
       <!-- Second Set (duplicate for infinite loop) -->
-      <div class="cert-card">
-        <img src="assets/certs/nit.png" alt="NIT AI ML" />
-        <p class="cert-label"><span class="cert-title">Advanced AI & ML</span></p>
+       <div class="cert-card">
+        <img src="assets/certs/power_bi.png" alt="Power BI Expert" />
+        <p class="cert-label"><span class="cert-title">Power BI Expert</span></p>
       </div>
       <div class="cert-card">
-        <img src="assets/certs/gcp.png" alt="Google Cloud Platform" />
-        <p class="cert-label"><span class="cert-title">Google Cloud Platform</span></p>
+        <img src="assets/certs/power_bi.png" alt="Power BI Microsoft" />
+        <p class="cert-label"><span class="cert-title">Power BI Data Analyst</span></p>
       </div>
       <div class="cert-card">
         <img src="assets/certs/nvidia.jpg" alt="NVIDIA DLI" />
         <p class="cert-label"><span class="cert-title">Deep Learning</span></p>
+      </div>
+      <div class="cert-card">
+        <img src="assets/certs/standford.jpg" alt="Stanford ML" />
+        <p class="cert-label"><span class="cert-title">Machine Learning</span></p>
+      </div>
+      <div class="cert-card">
+        <img src="assets/certs/gcp.png" alt="Google Cloud Platform" />
+        <p class="cert-label"><span class="cert-title">Google Cloud Platform</span></p>
       </div>
       <div class="cert-card">
         <img src="assets/certs/michigan.png" alt="UMich Web Python" />
@@ -966,42 +977,34 @@ document.addEventListener("click", function (e) {
         <p class="cert-label"><span class="cert-title">Python Basics</span></p>
       </div>
       <div class="cert-card">
-        <img src="assets/certs/standford.jpg" alt="Stanford ML" />
-        <p class="cert-label"><span class="cert-title">Machine Learning</span></p>
-      </div>
-      <div class="cert-card">
         <img src="assets/certs/incorta.png" alt="Incorta" />
         <p class="cert-label"><span class="cert-title">Incorta Certified</span></p>
+      </div>
+      <div class="cert-card">
+        <img src="assets/certs/nit.png" alt="NIT AI ML" />
+        <p class="cert-label"><span class="cert-title">Advanced AI & ML</span></p>
+      </div>
+
+      <!-- Third Set (for seamless infinite scroll) -->
+     <div class="cert-card">
+        <img src="assets/certs/power_bi.png" alt="Power BI Expert" />
+        <p class="cert-label"><span class="cert-title">Power BI Expert</span></p>
       </div>
       <div class="cert-card">
         <img src="assets/certs/power_bi.png" alt="Power BI Microsoft" />
         <p class="cert-label"><span class="cert-title">Power BI Data Analyst</span></p>
       </div>
       <div class="cert-card">
-        <img src="assets/certs/power_bi.png" alt="Power BI Expert" />
-        <p class="cert-label"><span class="cert-title">Power BI Expert</span></p>
-      </div>
-
-      <!-- Third Set (for seamless infinite scroll) -->
-      <div class="cert-card">
-        <img src="assets/certs/nit.png" alt="NIT AI ML" />
-        <p class="cert-label"><span class="cert-title">Advanced AI & ML</span></p>
-      </div>
-      <div class="cert-card">
-        <img src="assets/certs/gcp.png" alt="Google Cloud Platform" />
-        <p class="cert-label"><span class="cert-title">Google Cloud Platform</span></p>
-      </div>
-      <div class="cert-card">
         <img src="assets/certs/nvidia.jpg" alt="NVIDIA DLI" />
         <p class="cert-label"><span class="cert-title">Deep Learning</span></p>
       </div>
       <div class="cert-card">
-        <img src="assets/certs/michigan.png" alt="UMich Web Python" />
-        <p class="cert-label"><span class="cert-title">Python Web Data</span></p>
+        <img src="assets/certs/standford.jpg" alt="Stanford ML" />
+        <p class="cert-label"><span class="cert-title">Machine Learning</span></p>
       </div>
       <div class="cert-card">
-        <img src="assets/certs/michigan.png" alt="UMich Data Structures" />
-        <p class="cert-label"><span class="cert-title">Python Data Structures</span></p>
+        <img src="assets/certs/gcp.png" alt="Google Cloud Platform" />
+        <p class="cert-label"><span class="cert-title">Google Cloud Platform</span></p>
       </div>
 
     </div>
@@ -1041,17 +1044,18 @@ document.addEventListener("click", function (e) {
             </div>
           </div>
           <div class="contact-form">
-            <form class="form">
+            <form id="contact-form" class="form">
               <div class="form-group">
-                <input type="text" placeholder="Your Name" class="form-input" required>
+                <input type="text" id="user_name" name="user_name" placeholder="Your Name" class="form-input" required>
               </div>
               <div class="form-group">
-                <input type="email" placeholder="Your Email" class="form-input" required>
+                <input type="email" id="user_email" name="user_email" placeholder="Your Email" class="form-input" required>
               </div>
               <div class="form-group">
-                <textarea placeholder="Your Message" class="form-textarea" rows="5" required></textarea>
+                <textarea id="message" name="message" placeholder="Your Message" class="form-textarea" rows="5" required autocomplete="off" spellcheck="true" wrap="soft" style="white-space: pre-wrap !important; word-wrap: break-word !important;"></textarea>
               </div>
-              <button type="submit" class="btn btn-primary">Send Message</button>
+              <button type="submit" class="btn btn-primary" id="submit-btn">Send Message</button>
+              <div id="form-status" style="margin-top: 10px; padding: 10px; border-radius: 5px; display: none;"></div>
             </form>
           </div>
         </div>
@@ -1249,6 +1253,115 @@ document.addEventListener("click", function (e) {
       // Initialize with all skills visible
       filterSkills('all');
     });
+
+    // EmailJS Configuration and Form Handling
+    (function() {
+      // Initialize EmailJS
+      emailjs.init("4j9T7FsZbgRoJbRKt");
+
+      // EmailJS Configuration
+      const EMAILJS_SERVICE_ID = "service_ghxb0uz";
+      const EMAILJS_TEMPLATE_ID = "template_6mscdog";
+
+      // Get form elements
+      const contactForm = document.getElementById('contact-form');
+      const submitBtn = document.getElementById('submit-btn');
+      const formStatus = document.getElementById('form-status');
+
+      // Form submission handler
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Show loading state
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        formStatus.style.display = 'none';
+
+        // Get form data
+        const formData = new FormData(contactForm);
+        
+        // Get current time in readable format
+        const currentTime = new Date().toLocaleString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          timeZoneName: 'short'
+        });
+
+        // Prepare template parameters
+        const templateParams = {
+          name: formData.get('user_name'),
+          email: formData.get('user_email'),
+          message: formData.get('message'),
+          time: currentTime
+        };
+
+        // Validate form
+        if (!templateParams.name || !templateParams.email || !templateParams.message) {
+          showFormStatus('Please fill in all required fields.', 'error');
+          resetSubmitButton();
+          return;
+        }
+
+        // Validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(templateParams.email)) {
+          showFormStatus('Please enter a valid email address.', 'error');
+          resetSubmitButton();
+          return;
+        }
+
+        // Send email using EmailJS
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+          .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            showFormStatus('Thank you! Your message has been sent successfully.', 'success');
+            contactForm.reset();
+          })
+          .catch(function(error) {
+            console.log('FAILED...', error);
+            showFormStatus('Sorry, there was an error sending your message. Please try again.', 'error');
+          })
+          .finally(function() {
+            resetSubmitButton();
+          });
+      });
+
+      // Helper function to show form status
+      function showFormStatus(message, type) {
+        formStatus.textContent = message;
+        formStatus.style.display = 'block';
+        formStatus.style.backgroundColor = type === 'success' ? '#d4edda' : '#f8d7da';
+        formStatus.style.color = type === 'success' ? '#155724' : '#721c24';
+        formStatus.style.border = type === 'success' ? '1px solid #c3e6cb' : '1px solid #f5c6cb';
+        
+        // Hide status after 5 seconds
+        setTimeout(() => {
+          formStatus.style.display = 'none';
+        }, 5000);
+      }
+
+      // Helper function to reset submit button
+      function resetSubmitButton() {
+        submitBtn.textContent = 'Send Message';
+        submitBtn.disabled = false;
+      }
+
+      // Debug textarea input (temporary)
+      const messageTextarea = document.getElementById('message');
+      messageTextarea.addEventListener('input', function(e) {
+        console.log('Input value:', e.target.value);
+        console.log('Input length:', e.target.value.length);
+      });
+      
+      messageTextarea.addEventListener('keydown', function(e) {
+        if (e.code === 'Space') {
+          console.log('Space key detected');
+        }
+      });
+    })();
 
 
 
