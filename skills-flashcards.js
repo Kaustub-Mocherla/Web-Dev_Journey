@@ -6,75 +6,120 @@ class SkillsFlashcards {
         title: "Programming Languages",
         icon: "💻",
         color: "#4F46E5",
+        backgroundImage: "assets/skills/programming-languages.png",
         skills: [
           { name: "Python", icon: "assets/icons/python.svg" },
           { name: "SQL", icon: "assets/icons/mysql.svg" },
           { name: "R", icon: "assets/icons/R_logo.svg.png" },
-          { name: "JavaScript", icon: "assets/icons/react.svg" },
-          { name: "C++", icon: "text" }
+          { name: "PySpark", icon: "assets/icons/pyspark.png" },
+          { name: "React", icon: "assets/icons/react.svg" },
+          { name: "JavaScript", icon: "assets/icons/javascript.svg" }
         ]
       },
       {
         title: "Data Engineering",
         icon: "🔧",
         color: "#059669",
+        backgroundImage: "assets/skills/data-engineering.png",
         skills: [
           { name: "Apache Spark", icon: "assets/icons/spark.svg" },
-          { name: "PySpark", icon: "assets/icons/pyspark.png" },
           { name: "Apache Airflow", icon: "assets/icons/airflow.png" },
           { name: "Apache Kafka", icon: "assets/icons/kafka.svg" },
           { name: "Informatica", icon: "assets/icons/iics.png" },
+          { name: "Hadoop", icon: "assets/icons/hadoop-svgrepo-com.svg" },
+          { name: "BigQuery", icon: "assets/icons/bigquery-svgrepo-com.svg" },
           { name: "Databricks", icon: "assets/icons/databricks.svg" },
-          { name: "MongoDB", icon: "assets/icons/mongodb.svg" },
-          { name: "DBT", icon: "text" },
-          { name: "Hadoop", icon: "text" },
-          { name: "Git", icon: "assets/icons/github.svg" }
+          { name: "Azure Data Factory", icon: "assets/icons/azure.svg" },
+          { name: "Azure Blob Storage", icon: "assets/icons/azure.svg" }
         ]
       },
       {
-        title: "Cloud Platforms",
+        title: "Cloud",
         icon: "☁️",
         color: "#DC2626",
+        backgroundImage: "assets/skills/cloud.png",
         skills: [
-          { name: "AWS", icon: "assets/icons/aws.svg" },
           { name: "Azure", icon: "assets/icons/azure.svg" },
-          { name: "Google Cloud", icon: "assets/icons/gcp.svg" },
-          { name: "Amazon S3", icon: "text" },
-          { name: "AWS Lambda", icon: "text" },
-          { name: "Amazon EC2", icon: "text" },
-          { name: "BigQuery", icon: "text" },
-          { name: "Snowflake", icon: "text" },
-          { name: "Docker", icon: "text" },
-          { name: "Kubernetes", icon: "text" }
+          { name: "GCP (Google Cloud Platform)", icon: "assets/icons/gcp.svg" },
+          { name: "AWS", icon: "assets/icons/aws.svg" },
+          { name: "Snowflake", icon: "assets/icons/snowflake-svgrepo-com.svg" }
         ]
       },
       {
-        title: "AI/ML Frameworks",
+        title: "AI / ML",
         icon: "🤖",
         color: "#7C3AED",
+        backgroundImage: "assets/skills/aiml.png",
         skills: [
           { name: "TensorFlow", icon: "assets/icons/tensorflow.svg" },
           { name: "PyTorch", icon: "assets/icons/pytorch.svg" },
-          { name: "LLMs", icon: "assets/icons/ai-svgrepo-com.svg" },
+          { name: "spaCy", icon: "assets/icons/spacy.svg" },
+          { name: "LLM", icon: "assets/icons/ai-svgrepo-com.svg" },
+          { name: "NLP", icon: "assets/icons/nlp-neurolinguistic-programation-svgrepo-com.svg" },
           { name: "OpenCV", icon: "assets/icons/opencv.svg" },
-          { name: "Scikit-learn", icon: "text" },
-          { name: "Pandas", icon: "text" },
-          { name: "NumPy", icon: "text" },
-          { name: "Keras", icon: "text" },
-          { name: "Hugging Face", icon: "text" },
-          { name: "LangChain", icon: "text" }
+          { name: "Multi-Agent System", icon: "assets/icons/ai-svgrepo-com.svg" },
+          { name: "LangChain", icon: "assets/icons/langchain.svg" },
+          { name: "Semantic Kernel", icon: "assets/icons/sk_logo.png" },
+          { name: "MLflow", icon: "assets/icons/mlflow.svg" },
+          { name: "Azure OpenAI", icon: "assets/icons/azure.svg" },
+          { name: "RAG", icon: "assets/icons/soundwave-svgrepo-com.svg" },
+          { name: "Pinecone", icon: "assets/icons/pinecone-icon-seeklogo.svg" },
+          { name: "Hugging Face", icon: "assets/icons/hugging-face-svgrepo-com.svg" },
+          { name: "Transformers", icon: "assets/icons/hugging-face-svgrepo-com.svg" },
+          { name: "AI Agents", icon: "assets/icons/ai-svgrepo-com.svg" }
         ]
       },
       {
-        title: "BI & Analytics",
+        title: "Databases",
+        icon: "🗄️",
+        color: "#16A34A",
+        backgroundImage: "assets/skills/database.png",
+        skills: [
+          { name: "PostgreSQL", icon: "assets/icons/postgresql-logo-svgrepo-com.svg" },
+          { name: "MySQL", icon: "assets/icons/mysql.svg" },
+          { name: "MongoDB", icon: "assets/icons/mongodb.svg" },
+          { name: "SQL Server", icon: "assets/icons/microsoftsqlserver-svgrepo-com.svg" },
+          { name: "HDFS", icon: "assets/icons/hadoop-svgrepo-com.svg" }
+        ]
+      },
+      {
+        title: "Data Analytics",
+        icon: "📈",
+        color: "#0891B2",
+        backgroundImage: "assets/skills/data-analytics.png",
+        skills: [
+          { name: "Pandas", icon: "assets/icons/pandas-svgrepo-com.svg" },
+          { name: "NumPy", icon: "assets/icons/numpy-svgrepo-com.svg" },
+          { name: "PySpark", icon: "assets/icons/pyspark.png" },
+          { name: "Scikit-learn", icon: "assets/icons/scikitlearn.svg" },
+          { name: "TensorFlow", icon: "assets/icons/tensorflow.svg" }
+        ]
+      },
+      {
+        title: "Business Intelligence",
         icon: "📊",
         color: "#EA580C",
+        backgroundImage: "assets/skills/bi.png",
         skills: [
           { name: "Power BI", icon: "assets/icons/Power-BI-Logo.png" },
           { name: "Tableau", icon: "assets/icons/tableau.svg" },
-          { name: "Advanced Excel", icon: "text" },
-          { name: "SSRS", icon: "text" },
-          { name: "Google Analytics", icon: "text" }
+          { name: "Looker", icon: "assets/icons/looker-icon-svgrepo-com.svg" },
+          { name: "QuickSight", icon: "assets/icons/aws-quicksight-svgrepo-com.svg" },
+          { name: "Matplotlib", icon: "assets/icons/Matplotlib.svg" },
+          { name: "Seaborn", icon: "assets/icons/seaborn-1.svg" },
+          { name: "Excel", icon: "assets/icons/excel-svgrepo-com.svg" }
+        ]
+      },
+      {
+        title: "DevOps",
+        icon: "⚙️",
+        color: "#B91C1C",
+        backgroundImage: "assets/skills/devops.png",
+        skills: [
+          { name: "Docker", icon: "assets/icons/docker-svgrepo-com.svg" },
+          { name: "Kubernetes", icon: "assets/icons/kubernetes-svgrepo-com.svg" },
+          { name: "Terraform", icon: "assets/icons/terraform-svgrepo-com.svg" },
+          { name: "CI/CD", icon: "assets/icons/cicd-svgrepo-com.svg" }
         ]
       }
     ];
@@ -158,7 +203,8 @@ class SkillsFlashcards {
            style="z-index: ${zIndex}; transform: translateX(${translateX}px) scale(${scale}); opacity: ${opacity};">
         <div class="flashcard-inner">
           <!-- Front of card -->
-          <div class="flashcard-front" style="background: linear-gradient(135deg, ${category.color}, ${this.adjustBrightness(category.color, -20)});">
+          <div class="flashcard-front" 
+               style="background: linear-gradient(135deg, ${category.color}CC, ${this.adjustBrightness(category.color, -20)}CC), url('${category.backgroundImage}') center/cover;">
             <div class="category-icon">${category.icon}</div>
             <h3 class="category-title">${category.title}</h3>
             <div class="skill-count">${category.skills.length} Skills</div>

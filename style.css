@@ -1292,18 +1292,6 @@ section {
   margin: 0 auto;
 }
 
-/* Main timeline line */
-.experience-timeline::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 39px;
-  width: 2px;
-  height: 100%;
-  background: var(--gradient-secondary);
-  z-index: 0;
-}
-
 .experience-timeline-progress {
   position: absolute;
   top: 0;
@@ -1634,18 +1622,12 @@ section {
   display: flex;
   gap: 2rem;
   direction: ltr;
-  animation: scroll-left 30s linear infinite;
-  width: 200%;
+  width: auto;
+  will-change: transform;
+  transition: none;
 }
 
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
+/* Remove the CSS animation - now handled by JavaScript */
 
 /* Individual Certificate Card */
 .cert-card {
@@ -1708,39 +1690,8 @@ section {
 
 
 /* Mobile Responsiveness for Timeline */
-
-/* iPad/Tablet Specific (1024px and down) */
-@media (max-width: 1024px) {
-  .experience-timeline::before {
-    left: 30px;
-  }
-  
-  .experience-timeline-progress {
-    left: 30px;
-  }
-  
-  .timeline-item {
-    padding-left: 65px;
-  }
-  
-  .timeline-dot {
-    left: 24px;
-    width: 14px;
-    height: 14px;
-  }
-  
-  .timeline-content::before {
-    left: -15px;
-  }
-}
-
-/* Mobile Specific (768px and down) */
 @media (max-width: 768px) {
   .experience-timeline::before {
-    left: 15px;
-  }
-  
-  .experience-timeline-progress {
     left: 15px;
   }
   
